@@ -18,7 +18,7 @@ public class Heap {
             heapTransform(array, i, 0);
         }
     }
-
+    
     private static <E extends Comparable<E>> void heapTransform(E[] array, int size, int index) {
         int maximumIndex = index;
         int leftIndex = 2 * index + 1;
