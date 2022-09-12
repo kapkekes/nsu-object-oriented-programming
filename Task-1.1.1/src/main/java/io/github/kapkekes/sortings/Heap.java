@@ -1,4 +1,4 @@
-package ru.kapkekes.sortings;
+package io.github.kapkekes.sortings;
 
 public class Heap {
     public static <E extends Comparable<E>> void sort(E[] array) {
