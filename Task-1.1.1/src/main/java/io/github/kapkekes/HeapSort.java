@@ -1,6 +1,6 @@
-package io.github.kapkekes.sortings;
+package io.github.kapkekes;
 
-public class Heap {
+public class HeapSort {
     public static <E extends Comparable<E>> void sort(E[] array) {
         int size = array.length;
 

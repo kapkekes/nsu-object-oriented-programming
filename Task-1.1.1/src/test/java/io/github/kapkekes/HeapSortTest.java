@@ -1,13 +1,13 @@
-package io.github.kapkekes.sortings;
+package io.github.kapkekes;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static io.github.kapkekes.sortings.Heap.sort;
+import static io.github.kapkekes.HeapSort.sort;
 
 import java.util.Arrays;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 
-class HeapTest {
+class HeapSortTest {
 
     @Test
     void simpleTest() {
