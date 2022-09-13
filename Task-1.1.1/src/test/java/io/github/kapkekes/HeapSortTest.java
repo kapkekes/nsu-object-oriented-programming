@@ -7,10 +7,10 @@ import java.util.Arrays;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 
-class HeapSortTest {
+public class HeapSortTest {
 
     @Test
-    void simpleTest() {
+    public void simpleTest() {
         Integer[] actual = {5, 4, 3, 2, 1};
         Integer[] expected = {1, 2, 3, 4, 5};
 
@@ -20,7 +20,7 @@ class HeapSortTest {
     }
 
     @Test
-    void singleElement() {
+    public void singleElement() {
         Integer[] actual = {1};
         Integer[] expected = {1};
 
@@ -30,7 +30,7 @@ class HeapSortTest {
     }
 
     @Test
-    void empty() {
+    public void empty() {
         Integer[] actual = {};
         Integer[] expected = {};
 
@@ -40,7 +40,7 @@ class HeapSortTest {
     }
 
     @Test
-    void pseudorandomNumbers() {
+    public void pseudorandomNumbers() {
         Random random = new Random(123456789);
 
         Integer[] actual = random.ints(1000).boxed().toArray(Integer[]::new);
