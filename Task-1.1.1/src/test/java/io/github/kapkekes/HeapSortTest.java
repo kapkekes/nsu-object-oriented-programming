@@ -1,7 +1,7 @@
 package io.github.kapkekes;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static io.github.kapkekes.HeapSort.sort;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import java.util.Arrays;
 import java.util.Random;
