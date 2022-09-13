@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"io.github.kapkekes.sortings","l":"Heap"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"io.github.kapkekes","l":"HeapSort"}]

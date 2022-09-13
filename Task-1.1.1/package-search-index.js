@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"io.github.kapkekes.sortings"}]
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"io.github.kapkekes"}]

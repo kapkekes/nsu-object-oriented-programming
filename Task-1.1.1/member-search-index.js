@@ -1,1 +1,1 @@
-memberSearchIndex = [{"p":"io.github.kapkekes.sortings","c":"Heap","l":"Heap()","url":"%3Cinit%3E()"},{"p":"io.github.kapkekes.sortings","c":"Heap","l":"sort(E[])"}]
+memberSearchIndex = [{"p":"io.github.kapkekes","c":"HeapSort","l":"HeapSort()","url":"%3Cinit%3E()"},{"p":"io.github.kapkekes","c":"HeapSort","l":"sort(E[])"}]
