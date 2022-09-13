@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import java.util.Arrays;
 import java.util.Random;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.Test;
 
 class HeapSortTest {
@@ -43,7 +44,7 @@ class HeapSortTest {
     void pseudorandomNumbers() {
         Random random = new Random(123456789);
 
-        Integer[] actual = Arrays.stream(random.ints(1000).toArray()).boxed().toArray(Integer[]::new);
+        Integer[] actual = random.ints(1000).boxed().toArray(Integer[]::new);
         Integer[] expected = Arrays.stream(actual).sorted().toArray(Integer[]::new);
 
         sort(actual);
