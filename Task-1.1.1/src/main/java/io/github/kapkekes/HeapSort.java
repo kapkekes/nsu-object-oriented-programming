@@ -1,11 +1,14 @@
 package io.github.kapkekes;
 
+/**
+ * Heapsort wrapper.
+ */
 public class HeapSort {
 
     /**
      * Sorts the given array using the binary heap structure.
-     * <p>
-     * Warning: this is an unstable sort algorithm.
+     *
+     * <p>Warning: this is an unstable sort algorithm.
      *
      * @param array array, which will be sorted
      * @param <E> type of the array, should implement Comparable interface

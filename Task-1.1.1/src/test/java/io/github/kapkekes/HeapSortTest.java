@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.Random;
 import org.junit.jupiter.api.Test;
 
+/**
+ * Tests for the implemented heap sorting algorithm.
+ */
 public class HeapSortTest {
 
     @Test
