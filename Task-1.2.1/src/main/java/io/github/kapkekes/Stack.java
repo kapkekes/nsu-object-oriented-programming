@@ -6,7 +6,7 @@ import java.util.Optional;
 
 /**
  * Generic stack class with memory management.
- * 
+ *
  * @param <E> type of stack elements
  */
 public class Stack<E> {
