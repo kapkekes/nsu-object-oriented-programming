@@ -1,6 +1,15 @@
 package io.github.kapkekes;
 
 public class HeapSort {
+
+    /**
+     * Sorts the given array using the binary heap structure.
+     * <p>
+     * Warning: this is an unstable sort algorithm.
+     *
+     * @param array array, which will be sorted
+     * @param <E> type of the array, should implement Comparable interface
+     */
     public static <E extends Comparable<E>> void sort(E[] array) {
         int size = array.length;
 
@@ -18,7 +27,15 @@ public class HeapSort {
             heapTransform(array, i, 0);
         }
     }
-    
+
+    /**
+     * Internal function. Should not be used outside this class methods.
+     *
+     * @param array array, which will be transformed to the binary heap
+     * @param size length of the array, used to build different heaps
+     * @param index index of the element, which will be rebalanced
+     * @param <E> type of the array, should implement Comparable interface
+     */
     private static <E extends Comparable<E>> void heapTransform(E[] array, int size, int index) {
         int maximumIndex = index;
         int leftIndex = 2 * index + 1;
