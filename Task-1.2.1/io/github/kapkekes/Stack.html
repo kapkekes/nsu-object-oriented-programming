@@ -87,13 +87,13 @@ loadScripts(document, 'script');</script>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -142,6 +142,34 @@ extends java.lang.Object</pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- =========== FIELD SUMMARY =========== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Field</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>protected int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#length">length</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected static int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#minimalLength">minimalLength</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section role="region">
 <ul class="blockList">
@@ -190,16 +218,15 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>java.util.Optional&lt;<a href="Stack.html" title="type parameter in Stack">E</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#pop()">pop</a></span>()</code></th>
 <td class="colLast">
-<div class="block">Retrieves an element from the top of this stack and wraps
- it with <code>Optional</code>.</div>
+<div class="block">Retrieves an element from the top of this stack and wraps it with <code>Optional</code>.</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.util.Optional&lt;<a href="Stack.html" title="class in io.github.kapkekes">Stack</a>&lt;<a href="Stack.html" title="type parameter in Stack">E</a>&gt;&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#popStack(int)">popStack</a></span>&#8203;(int&nbsp;length)</code></th>
 <td class="colLast">
-<div class="block">Retrieves the <code>length</code> elements from the top of this
- stack as a new stack and wraps it with <code>Optional</code>.</div>
+<div class="block">Retrieves the <code>length</code> elements from the top of this stack as a new stack and wraps it
+ with <code>Optional</code>.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
@@ -240,6 +267,38 @@ extends java.lang.Object</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<section role="region">
+<ul class="blockList">
+<li class="blockList"><a id="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a id="minimalLength">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>minimalLength</h4>
+<pre>protected static final&nbsp;int minimalLength</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#io.github.kapkekes.Stack.minimalLength">Constant Field Values</a></dd>
+</dl>
+</li>
+</ul>
+<a id="length">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>length</h4>
+<pre>protected&nbsp;int length</pre>
+</li>
+</ul>
+</li>
+</ul>
+</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section role="region">
 <ul class="blockList">
@@ -288,8 +347,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>resizeStack</h4>
 <pre class="methodSignature">public&nbsp;<a href="Stack.html" title="class in io.github.kapkekes">Stack</a>&lt;<a href="Stack.html" title="type parameter in Stack">E</a>&gt;&nbsp;resizeStack&#8203;(int&nbsp;newLength)</pre>
-<div class="block">Changes the stack size. It should be used if you know the
- approximate number of items that will be stored in the stack.
+<div class="block">Changes the stack size. It should be used if you know the approximate number of items that
+ will be stored in the stack.
 
  <p>The method returns this stack for fluent style code.</div>
 <dl>
@@ -345,9 +404,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>pop</h4>
 <pre class="methodSignature">public&nbsp;java.util.Optional&lt;<a href="Stack.html" title="type parameter in Stack">E</a>&gt;&nbsp;pop()</pre>
-<div class="block">Retrieves an element from the top of this stack and wraps
- it with <code>Optional</code>. If this stack is empty, the method
- will return an empty <code>Optional</code> instance.</div>
+<div class="block">Retrieves an element from the top of this stack and wraps it with <code>Optional</code>. If this
+ stack is empty, the method will return an empty <code>Optional</code> instance.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>an element from the top of this stack</dd>
@@ -361,10 +419,9 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>popStack</h4>
 <pre class="methodSignature">public&nbsp;java.util.Optional&lt;<a href="Stack.html" title="class in io.github.kapkekes">Stack</a>&lt;<a href="Stack.html" title="type parameter in Stack">E</a>&gt;&gt;&nbsp;popStack&#8203;(int&nbsp;length)</pre>
-<div class="block">Retrieves the <code>length</code> elements from the top of this
- stack as a new stack and wraps it with <code>Optional</code>. If
- this stack contains less than <code>length</code> elements, the
- method will return an empty <code>Optional</code> instance.</div>
+<div class="block">Retrieves the <code>length</code> elements from the top of this stack as a new stack and wraps it
+ with <code>Optional</code>. If this stack contains less than <code>length</code> elements, the method
+ will return an empty <code>Optional</code> instance.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>length</code> - the length of the new stack</dd>
@@ -424,13 +481,13 @@ extends java.lang.Object</pre>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
