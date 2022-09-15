@@ -10,7 +10,7 @@ import java.util.Optional;
  * @param <E> type of stack elements
  */
 public class Stack<E> {
-    protected static final int minimalLength = 4;
+    protected static final int minimalLength = 2;
 
     protected int length;
     private int used;
