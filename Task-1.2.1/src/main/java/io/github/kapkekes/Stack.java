@@ -43,7 +43,7 @@ public class Stack<E> {
      */
     public Stack<E> resizeStack(int newLength) {
         this.length = Math.max(newLength, minimalLength);
-        this.array = copyOf(this.array, newLength);
+        this.array = copyOf(this.array, this.length);
         return this;
     }
 
