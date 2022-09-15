@@ -2,7 +2,9 @@ package io.github.kapkekes;
 
 import static java.util.Arrays.copyOf;
 
+import java.util.Collection;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 /**
  * Generic stack class with memory management.
@@ -11,7 +13,7 @@ import java.util.Optional;
  */
 public class Stack<E> {
     private int used;
-    private int length;
+    protected int length;
     private Object[] array;
 
     /**
@@ -60,7 +62,7 @@ public class Stack<E> {
             this.resizeStack(this.used << 1);
         }
 
-        this.array[this.length++] = elem;
+        this.array[this.used++] = elem;
 
         return this;
     }
@@ -79,7 +81,7 @@ public class Stack<E> {
         }
 
         if (this.used + stack.used >= this.length) {
-            this.resizeStack((this.used + stack.used - 1) << 1);
+            this.resizeStack((this.used + stack.used) << 1);
         }
 
         for (int index = 0; index < stack.used; index++) {
@@ -128,7 +130,7 @@ public class Stack<E> {
         Stack<E> stack = new Stack<>();
         stack.resizeStack(length).used = length;
 
-        for (int i = 0; i < length; i++) {
+        for (int i = length - 1; i >= 0; i--) {
             stack.array[i] = this.array[--this.used];
         }
 
