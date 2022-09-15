@@ -2,9 +2,7 @@ package io.github.kapkekes;
 
 import static java.util.Arrays.copyOf;
 
-import java.util.Collection;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 /**
  * Generic stack class with memory management.
@@ -12,16 +10,16 @@ import java.util.stream.Stream;
  * @param <E> type of stack elements
  */
 public class Stack<E> {
-    private int used;
+    protected static final int minimalLength = 4;
+
     protected int length;
+    private int used;
     private Object[] array;
 
-    /**
-     * Creates a stack object with internal size of four elements.
-     */
+    /** Creates a stack object with internal size of four elements. */
     public Stack() {
         this.used = 0;
-        this.length = 4;
+        this.length = minimalLength;
         this.array = new Object[this.length];
     }
 
@@ -35,8 +33,8 @@ public class Stack<E> {
     }
 
     /**
-     * Changes the stack size. It should be used if you know the
-     * approximate number of items that will be stored in the stack.
+     * Changes the stack size. It should be used if you know the approximate number of items that
+     * will be stored in the stack.
      *
      * <p>The method returns this stack for fluent style code.
      *
@@ -44,7 +42,7 @@ public class Stack<E> {
      * @return this
      */
     public Stack<E> resizeStack(int newLength) {
-        this.length = newLength;
+        this.length = Math.max(newLength, minimalLength);
         this.array = copyOf(this.array, newLength);
         return this;
     }
@@ -92,9 +90,8 @@ public class Stack<E> {
     }
 
     /**
-     * Retrieves an element from the top of this stack and wraps
-     * it with {@code Optional}. If this stack is empty, the method
-     * will return an empty {@code Optional} instance.
+     * Retrieves an element from the top of this stack and wraps it with {@code Optional}. If this
+     * stack is empty, the method will return an empty {@code Optional} instance.
      *
      * @return an element from the top of this stack
      */
@@ -114,10 +111,9 @@ public class Stack<E> {
     }
 
     /**
-     * Retrieves the {@code length} elements from the top of this
-     * stack as a new stack and wraps it with {@code Optional}. If
-     * this stack contains less than {@code length} elements, the
-     * method will return an empty {@code Optional} instance.
+     * Retrieves the {@code length} elements from the top of this stack as a new stack and wraps it
+     * with {@code Optional}. If this stack contains less than {@code length} elements, the method
+     * will return an empty {@code Optional} instance.
      *
      * @param length the length of the new stack
      * @return the new stack
