@@ -87,7 +87,17 @@ class StackTest {
         IntStream.range(0, range).forEach(stack::push);
         assertEquals(Optional.empty(), stack.popStack(range + 1));
 
+
+    }
+
+    @Test
+    void nullChecks() {
+        Stack<Integer> stack = new Stack<>();
+
+        stack.push(null);
+        assertEquals(0, stack.count());
+
         stack.pushStack(null);
-        assertEquals(range, stack.count());
+        assertEquals(0, stack.count());
     }
 }
