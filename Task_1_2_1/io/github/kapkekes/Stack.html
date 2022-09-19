@@ -395,7 +395,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>push</h4>
-<pre class="methodSignature">public&nbsp;<a href="Stack.html" title="class in io.github.kapkekes">Stack</a>&lt;<a href="Stack.html" title="type parameter in Stack">E</a>&gt;&nbsp;push&#8203;(<a href="Stack.html" title="type parameter in Stack">E</a>&nbsp;elem)</pre>
+<pre class="methodSignature">public&nbsp;<a href="Stack.html" title="class in io.github.kapkekes">Stack</a>&lt;<a href="Stack.html" title="type parameter in Stack">E</a>&gt;&nbsp;push&#8203;(<a href="Stack.html" title="type parameter in Stack">E</a>&nbsp;elem)
+              throws java.lang.IllegalStateException</pre>
 <div class="block">Pushes the element on the top of the stack.
 
  <p>The method returns this stack for fluent style code.</div>
@@ -403,7 +404,9 @@ extends java.lang.Object</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>elem</code> - the element to put in the stack</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>this</dd>
+<dd><code>this</code> instance</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.IllegalStateException</code> - if <code>elem</code> is <code>null</code></dd>
 </dl>
 </li>
 </ul>
@@ -413,7 +416,8 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>pushStack</h4>
-<pre class="methodSignature">public&nbsp;<a href="Stack.html" title="class in io.github.kapkekes">Stack</a>&lt;<a href="Stack.html" title="type parameter in Stack">E</a>&gt;&nbsp;pushStack&#8203;(<a href="Stack.html" title="class in io.github.kapkekes">Stack</a>&lt;<a href="Stack.html" title="type parameter in Stack">E</a>&gt;&nbsp;stack)</pre>
+<pre class="methodSignature">public&nbsp;<a href="Stack.html" title="class in io.github.kapkekes">Stack</a>&lt;<a href="Stack.html" title="type parameter in Stack">E</a>&gt;&nbsp;pushStack&#8203;(<a href="Stack.html" title="class in io.github.kapkekes">Stack</a>&lt;<a href="Stack.html" title="type parameter in Stack">E</a>&gt;&nbsp;stack)
+                   throws java.lang.IllegalStateException</pre>
 <div class="block">Copies elements from the given stack to the top of this stack.
 
  <p>The method returns this stack for fluent style code.</div>
@@ -421,7 +425,9 @@ extends java.lang.Object</pre>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>stack</code> - the stack from which the elements will be copied</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>this</dd>
+<dd><code>this</code> instance</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.lang.IllegalStateException</code> - if <code>stack</code> is <code>null</code></dd>
 </dl>
 </li>
 </ul>
