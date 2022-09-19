@@ -52,11 +52,12 @@ public class Stack<E> {
      * <p>The method returns this stack for fluent style code.
      *
      * @param elem the element to put in the stack
-     * @return this
+     * @return {@code this} instance
+     * @throws IllegalStateException if {@code elem} is {@code null}
      */
-    public Stack<E> push(E elem) {
+    public Stack<E> push(E elem) throws IllegalStateException {
         if (elem == null) {
-            return this;
+            throw new IllegalStateException("Can't push 'null' to the stack");
         }
 
         if (this.used >= this.length) {
@@ -74,11 +75,12 @@ public class Stack<E> {
      * <p>The method returns this stack for fluent style code.
      *
      * @param stack the stack from which the elements will be copied
-     * @return this
+     * @return {@code this} instance
+     * @throws IllegalStateException if {@code stack} is {@code null}
      */
-    public Stack<E> pushStack(Stack<E> stack) {
+    public Stack<E> pushStack(Stack<E> stack) throws IllegalStateException {
         if (stack == null) {
-            return this;
+            throw new IllegalStateException("Can't push 'null' to the stack");
         }
 
         if (this.used + stack.used >= this.length) {
