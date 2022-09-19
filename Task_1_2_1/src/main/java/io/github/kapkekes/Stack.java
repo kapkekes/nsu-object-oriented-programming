@@ -11,10 +11,9 @@ import java.util.Optional;
  */
 public class Stack<E> {
     protected static final int minimalLength = 2;
-
     protected int length;
-    private int used;
-    private Object[] array;
+    protected int used;
+    protected Object[] array;
 
     /** Creates a stack object with internal size of four elements. */
     public Stack() {
@@ -56,6 +55,10 @@ public class Stack<E> {
      * @return this
      */
     public Stack<E> push(E elem) {
+        if (elem == null) {
+            return this;
+        }
+
         if (this.used >= this.length) {
             this.resizeStack(this.used << 1);
         }
