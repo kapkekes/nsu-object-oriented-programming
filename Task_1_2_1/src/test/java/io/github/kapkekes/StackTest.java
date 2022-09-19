@@ -1,6 +1,7 @@
 package io.github.kapkekes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Optional;
 import java.util.Random;
@@ -94,10 +95,10 @@ class StackTest {
     void nullChecks() {
         Stack<Integer> stack = new Stack<>();
 
-        stack.push(null);
+        assertThrows(IllegalStateException.class, () -> stack.push(null));
         assertEquals(0, stack.count());
 
-        stack.pushStack(null);
+        assertThrows(IllegalStateException.class, () -> stack.pushStack(null));
         assertEquals(0, stack.count());
     }
 }
