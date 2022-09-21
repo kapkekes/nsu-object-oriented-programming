@@ -10,7 +10,7 @@ import java.util.Optional;
  * @param <E> type of stack elements
  */
 public class Stack<E> {
-    protected static final int minimalLength = 2;
+    protected static final int MINIMAL_LENGTH = 2;
     protected int length;
     protected int used;
     protected Object[] array;
@@ -18,7 +18,7 @@ public class Stack<E> {
     /** Creates a stack object with internal size of four elements. */
     public Stack() {
         this.used = 0;
-        this.length = minimalLength;
+        this.length = MINIMAL_LENGTH;
         this.array = new Object[this.length];
     }
 
@@ -41,7 +41,7 @@ public class Stack<E> {
      * @return this
      */
     public Stack<E> resizeStack(int newLength) {
-        this.length = Math.max(newLength, minimalLength);
+        this.length = Math.max(newLength, MINIMAL_LENGTH);
         this.array = copyOf(this.array, this.length);
         return this;
     }
@@ -61,7 +61,7 @@ public class Stack<E> {
         }
 
         if (this.used >= this.length) {
-            this.resizeStack(this.used << 1);
+            this.resizeStack(this.used * 2);
         }
 
         this.array[this.used++] = elem;
@@ -84,7 +84,7 @@ public class Stack<E> {
         }
 
         if (this.used + stack.used >= this.length) {
-            this.resizeStack((this.used + stack.used) << 1);
+            this.resizeStack((this.used + stack.used) * 2);
         }
 
         for (int index = 0; index < stack.used; index++) {
@@ -106,10 +106,10 @@ public class Stack<E> {
             return Optional.empty();
         }
 
-        Optional<E> element = (Optional<E>) Optional.of(this.array[--this.used]);
+        Optional<E> element = Optional.of((E) this.array[--this.used]);
 
-        if (this.used <= (this.length >> 2)) {
-            this.resizeStack(this.length >> 1);
+        if (this.used <= (this.length / 4)) {
+            this.resizeStack(this.length / 2);
         }
 
         return element;
@@ -135,8 +135,8 @@ public class Stack<E> {
             stack.array[i] = this.array[--this.used];
         }
 
-        if (this.used <= (this.length >> 2)) {
-            this.resizeStack(this.length >> 1);
+        if (this.used <= (this.length / 4)) {
+            this.resizeStack(this.length / 2);
         }
 
         return Optional.of(stack);
