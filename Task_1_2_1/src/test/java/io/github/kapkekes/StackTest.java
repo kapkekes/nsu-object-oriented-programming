@@ -4,7 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.Optional;
-import java.util.Random;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -24,7 +23,6 @@ class StackTest {
                 .pushStack(appendingStack);
 
         assertEquals(4, stack.count());
-        assertEquals(8, stack.length);
 
         Optional<Integer> poppedValue = stack.pop();
 
@@ -43,36 +41,6 @@ class StackTest {
 
         assertEquals(1, stack.count());
         assertEquals(Optional.of(2), stack.pop());
-    }
-
-    @Test
-    void stackMemoryManagement() {
-        Stack<Integer> stack = new Stack<Integer>().resizeStack(10500);
-        assertEquals(10500, stack.length);
-
-        Random random = new Random(123456789);
-
-        random.ints(10000).boxed().forEachOrdered(stack::push);
-        assertEquals(10500, stack.length);
-
-        random.ints(4000).boxed().forEachOrdered(stack::push);
-        assertEquals(21000, stack.length);
-
-        stack.popStack(8749);
-        assertEquals(21000, stack.length);
-
-        stack.popStack(10);
-        assertEquals(10500, stack.length);
-    }
-
-    @Test
-    void manualMemoryManagement() {
-        Stack<Integer> stack = new Stack<Integer>().resizeStack(1);
-        assertEquals(Stack.MINIMAL_LENGTH, stack.length);
-
-        IntStream.range(0, 5).forEach(stack::push);
-
-        assertEquals(Stack.MINIMAL_LENGTH * 4, stack.length);
     }
 
     @Test
