@@ -68,14 +68,11 @@ class StackTest {
     @Test
     void manualMemoryManagement() {
         Stack<Integer> stack = new Stack<Integer>().resizeStack(1);
-        assertEquals(Stack.minimalLength, stack.length);
+        assertEquals(Stack.MINIMAL_LENGTH, stack.length);
 
-        int range = 5;
+        IntStream.range(0, 5).forEach(stack::push);
 
-        int shift = (int) Math.ceil(Math.log(range) / Math.log(2)) - 1;
-        IntStream.range(0, range).forEach(stack::push);
-
-        assertEquals(Stack.minimalLength << shift, stack.length);
+        assertEquals(Stack.MINIMAL_LENGTH * 4, stack.length);
     }
 
     @Test
@@ -83,12 +80,8 @@ class StackTest {
         Stack<Integer> stack = new Stack<>();
         assertEquals(Optional.empty(), stack.pop());
 
-        int range = 5;
-
-        IntStream.range(0, range).forEach(stack::push);
-        assertEquals(Optional.empty(), stack.popStack(range + 1));
-
-
+        IntStream.range(0, 5).forEach(stack::push);
+        assertEquals(Optional.empty(), stack.popStack(6));
     }
 
     @Test
