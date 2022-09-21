@@ -10,10 +10,10 @@ import java.util.Optional;
  * @param <E> type of stack elements
  */
 public class Stack<E> {
-    protected static final int MINIMAL_LENGTH = 2;
-    protected int length;
-    protected int used;
-    protected Object[] array;
+    private static final int MINIMAL_LENGTH = 2;
+    private int length;
+    private int used;
+    private Object[] array;
 
     /** Creates a stack object with internal size of four elements. */
     public Stack() {
