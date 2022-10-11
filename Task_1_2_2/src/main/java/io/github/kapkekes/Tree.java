@@ -46,7 +46,7 @@ public class Tree<E> implements Iterable<E> {
     private E value;
     private final List<Tree<E>> children;
     private Search mode;
-    private int iteratorCount;
+    private Integer iteratorCount;
 
     private List<Tree<E>> breadthFirst() {
         Queue<Tree<E>> queue = new ArrayDeque<>();
@@ -158,7 +158,7 @@ public class Tree<E> implements Iterable<E> {
         if (iteratorCount > 0) {
             throw new ConcurrentModificationException(
                     "can't add a value to a tree, as it has %d active iterators"
-                            .formatted(this.iteratorCount)
+                            .replace("%d", this.iteratorCount.toString())
             );
         }
 
@@ -183,7 +183,7 @@ public class Tree<E> implements Iterable<E> {
         if (iteratorCount > 0) {
             throw new ConcurrentModificationException(
                     "can't add a branch to a tree, as it has %d active iterators"
-                            .formatted(this.iteratorCount)
+                            .replace("%d", this.iteratorCount.toString())
             );
         }
 
@@ -217,11 +217,19 @@ public class Tree<E> implements Iterable<E> {
      *
      * @param val value to set
      * @return {@code this}
+     * @throws ConcurrentModificationException if this tree has active iterators at the moment
      * @throws NullPointerException if {@code val} is {@code null}
      */
-    public Tree<E> set(E val) throws NullPointerException {
+    public Tree<E> set(E val) throws ConcurrentModificationException, NullPointerException {
         if (val == null) {
             throw new NullPointerException("can't set a null value as a tree value");
+        }
+
+        if (iteratorCount > 0) {
+            throw new ConcurrentModificationException(
+                    "can't add a branch to a tree, as it has %d active iterators"
+                            .replace("%d", this.iteratorCount.toString())
+            );
         }
 
         value = val;
