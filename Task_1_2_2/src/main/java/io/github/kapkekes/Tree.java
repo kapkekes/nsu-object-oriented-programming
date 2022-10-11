@@ -1,6 +1,12 @@
 package io.github.kapkekes;
 
-import java.util.*;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
+import java.util.Iterator;
+import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Queue;
 
 /**
  * Generic tree class. Each node contains a value and a list of its children.
@@ -42,7 +48,7 @@ public class Tree<E> implements Iterable<E> {
     private Search mode;
     private int iteratorCount;
 
-    private List<Tree<E>> breadthFirst () {
+    private List<Tree<E>> breadthFirst() {
         Queue<Tree<E>> queue = new ArrayDeque<>();
         List<Tree<E>> descendants = new ArrayList<>(this.size());
 
@@ -57,7 +63,7 @@ public class Tree<E> implements Iterable<E> {
         return descendants;
     }
 
-    private List<Tree<E>> depthFirst () {
+    private List<Tree<E>> depthFirst() {
         List<Tree<E>> descendants = new ArrayList<>(this.size());
 
         descendants.add(this);
@@ -68,6 +74,11 @@ public class Tree<E> implements Iterable<E> {
         return descendants;
     }
 
+    /**
+     * Create an empty tree with the given value.
+     *
+     * @param val the value to set
+     */
     public Tree(E val) {
         value = val;
         children = new ArrayList<>();
@@ -75,21 +86,33 @@ public class Tree<E> implements Iterable<E> {
         iteratorCount = 0;
     }
 
+    /**
+     * Change the traverse mode of tree. It is set to {@code BREADTH} by default.
+     *
+     * @param mode the algorithm to traverse tree
+     * @return {@code this}
+     */
     public Tree<E> with(Search mode) {
         this.mode = mode;
         return this;
     }
 
+    /**
+     * Get the quantity of nodes in this tree, including the head.
+     *
+     * @return the quantity of nodes
+     */
     public int size() {
         return children.stream().mapToInt(Tree::size).reduce(Integer::sum).orElse(1);
     }
 
     @Override
     public Iterator<E> iterator() {
-        List<Tree<E>> descendants = switch (mode) {
-            case BREADTH -> breadthFirst();
-            case DEPTH -> depthFirst();
-        };
+        List<Tree<E>> descendants =
+                switch (mode) {
+                    case BREADTH -> breadthFirst();
+                    case DEPTH -> depthFirst();
+                };
 
         for (Tree<E> descendant : descendants) {
             descendant.iteratorCount++;
