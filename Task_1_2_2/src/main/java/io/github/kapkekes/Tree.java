@@ -96,8 +96,13 @@ public class Tree<E> implements Iterable<E> {
      *
      * @param mode the algorithm to traverse tree
      * @return {@code this}
+     * @throws NullPointerException if {@code mode} is {@code null}
      */
-    public Tree<E> with(Search mode) {
+    public Tree<E> with(Search mode) throws NullPointerException {
+        if (mode == null) {
+            throw new NullPointerException("can't set a null as a traverse mode");
+        }
+
         this.mode = mode;
         return this;
     }
@@ -120,11 +125,15 @@ public class Tree<E> implements Iterable<E> {
      */
     @Override
     public Iterator<E> iterator() {
-        List<Tree<E>> descendants =
-                switch (mode) {
-                    case BREADTH -> breadthFirst();
-                    case DEPTH -> depthFirst();
-                };
+        List<Tree<E>> descendants = null;
+
+        if (mode == Search.BREADTH) {
+            descendants = breadthFirst();
+        } else if (mode == Search.DEPTH) {
+            descendants = depthFirst();
+        }
+
+        assert descendants != null;
 
         for (Tree<E> descendant : descendants) {
             descendant.iteratorCount++;
