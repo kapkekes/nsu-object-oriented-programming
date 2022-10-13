@@ -14,65 +14,10 @@ import java.util.Queue;
  * @param <E> type of tree elements
  */
 public class Tree<E> implements Iterable<E> {
-    private static class TreeIterator<T> implements Iterator<T> {
-        private final Iterator<Tree<T>> descendants;
-
-        private TreeIterator(List<Tree<T>> traversed) {
-            descendants = traversed.iterator();
-        }
-
-        @Override
-        public boolean hasNext() {
-            return descendants.hasNext();
-        }
-
-        @Override
-        public T next() throws NoSuchElementException {
-            Tree<T> descendant = descendants.next();
-            descendant.iteratorCount--;
-            return descendant.value;
-        }
-    }
-
-    /** Search algorithm options. */
-    public enum Search {
-        /** Use breadth-first search algorithm (aka BFS) to traverse the tree. */
-        BREADTH,
-
-        /** Use depth-first search algorithm (aka DFS) to traverse the tree. */
-        DEPTH
-    }
-
     private E value;
     private final List<Tree<E>> children;
     private Search mode;
     private Integer iteratorCount;
-
-    private List<Tree<E>> breadthFirst() {
-        Queue<Tree<E>> queue = new ArrayDeque<>();
-        List<Tree<E>> descendants = new ArrayList<>(this.size());
-
-        queue.add(this);
-
-        while (!queue.isEmpty()) {
-            Tree<E> descendant = queue.poll();
-            descendants.add(descendant);
-            queue.addAll(descendant.children);
-        }
-
-        return descendants;
-    }
-
-    private List<Tree<E>> depthFirst() {
-        List<Tree<E>> descendants = new ArrayList<>(this.size());
-
-        descendants.add(this);
-        for (Tree<E> descendant : children) {
-            descendants.addAll(descendant.depthFirst());
-        }
-
-        return descendants;
-    }
 
     /**
      * Create an empty tree with the given value.
@@ -147,7 +92,6 @@ public class Tree<E> implements Iterable<E> {
      *
      * @param val a value to add
      * @return {@code this}
-     * @throws ConcurrentModificationException if this tree has active iterators at the moment
      * @throws NullPointerException if {@code val} is {@code null}
      */
     public Tree<E> add(E val) throws ConcurrentModificationException, NullPointerException {
@@ -246,5 +190,60 @@ public class Tree<E> implements Iterable<E> {
      */
     public Tree<E> remove(int index) throws IndexOutOfBoundsException {
         return children.remove(index);
+    }
+
+    private List<Tree<E>> breadthFirst() {
+        Queue<Tree<E>> queue = new ArrayDeque<>();
+        List<Tree<E>> descendants = new ArrayList<>(this.size());
+
+        queue.add(this);
+
+        while (!queue.isEmpty()) {
+            Tree<E> descendant = queue.poll();
+            descendants.add(descendant);
+            queue.addAll(descendant.children);
+        }
+
+        return descendants;
+    }
+
+    private List<Tree<E>> depthFirst() {
+        List<Tree<E>> descendants = new ArrayList<>(this.size());
+
+        descendants.add(this);
+        for (Tree<E> descendant : children) {
+            descendants.addAll(descendant.depthFirst());
+        }
+
+        return descendants;
+    }
+
+    private static class TreeIterator<T> implements Iterator<T> {
+        private final Iterator<Tree<T>> descendants;
+
+        private TreeIterator(List<Tree<T>> traversed) {
+            descendants = traversed.iterator();
+        }
+
+        @Override
+        public boolean hasNext() {
+            return descendants.hasNext();
+        }
+
+        @Override
+        public T next() throws NoSuchElementException {
+            Tree<T> descendant = descendants.next();
+            descendant.iteratorCount--;
+            return descendant.value;
+        }
+    }
+
+    /** Search algorithm options. */
+    public enum Search {
+        /** Use breadth-first search algorithm (aka BFS) to traverse the tree. */
+        BREADTH,
+
+        /** Use depth-first search algorithm (aka DFS) to traverse the tree. */
+        DEPTH
     }
 }
