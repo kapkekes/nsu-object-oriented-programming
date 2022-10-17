@@ -4,14 +4,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 /** A set of tests for the {@code Tree} class. */
 public class TreeTest {
@@ -22,29 +21,14 @@ public class TreeTest {
     public static List<Integer> depth =
             List.of(1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 3, 12, 16, 17, 13, 14, 15);
 
+    /** Initialize tree and branch. */
     @BeforeAll
     public static void initialization() {
         expected = new Tree<>(1);
-        expected.add(2)
-                .getBranch(0)
-                .add(4)
-                .add(5)
-                .add(6)
-                .add(7)
-                .add(8)
-                .add(9)
-                .add(10)
-                .add(11);
+        expected.add(2).getBranch(0).add(4).add(5).add(6).add(7).add(8).add(9).add(10).add(11);
 
         branch = new Tree<>(3);
-        branch.add(12)
-                .getBranch(0)
-                .add(16)
-                .add(17)
-                .getParent()
-                .add(13)
-                .add(14)
-                .add(15);
+        branch.add(12).getBranch(0).add(16).add(17).getParent().add(13).add(14).add(15);
 
         expected.add(branch);
     }
@@ -105,8 +89,7 @@ public class TreeTest {
                     while (true) {
                         iterator.next();
                     }
-                }
-        );
+                });
 
         assertThrows(
                 NoSuchElementException.class,
@@ -115,8 +98,7 @@ public class TreeTest {
                     while (true) {
                         iterator.next();
                     }
-                }
-        );
+                });
 
         assertThrows(
                 ConcurrentModificationException.class,
@@ -124,8 +106,7 @@ public class TreeTest {
                     for (Integer integer : expected) {
                         expected.setValue(10).setValue(1);
                     }
-                }
-        );
+                });
     }
 
     @Test
