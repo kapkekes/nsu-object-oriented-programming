@@ -38,9 +38,9 @@ public class Tree<E> implements Iterable<E> {
     }
 
     /**
-     * Returns an iterator over the elements in this tree in proper sequence. Order of the
-     * elements will be defined by {@code mode} field; use {@code with()} method to specify needed
-     * traverse option.
+     * Returns an iterator over the elements in this tree in proper sequence. Order of the elements
+     * will be defined by {@code mode} field; use {@code with()} method to specify needed traverse
+     * option.
      *
      * @return an iterator over the elements
      */
