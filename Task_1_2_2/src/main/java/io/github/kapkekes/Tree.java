@@ -182,6 +182,8 @@ public class Tree<E> implements Iterable<E> {
             throw new NullPointerException();
         }
 
+        propagate();
+
         value = val;
         return this;
     }
@@ -259,7 +261,7 @@ public class Tree<E> implements Iterable<E> {
                 deque.addFirst(popped.children.get(i));
             }
 
-            return null;
+            return popped.value;
         }
     }
 
