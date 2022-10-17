@@ -3,10 +3,12 @@ package io.github.kapkekes;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
+import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Generic tree class. Each node contains a value and a list of its children.
@@ -15,9 +17,10 @@ import java.util.Queue;
  */
 public class Tree<E> implements Iterable<E> {
     private E value;
+    private Tree<E> parent;
     private final List<Tree<E>> children;
     private Search mode;
-    private Integer iteratorCount;
+    private int modificationState;
 
     /**
      * Create an empty tree with the given value.
@@ -27,13 +30,29 @@ public class Tree<E> implements Iterable<E> {
      */
     public Tree(E val) throws NullPointerException {
         if (val == null) {
-            throw new NullPointerException("can't create a tree with null value");
+            throw new NullPointerException();
         }
 
         value = val;
+        parent = null;
         children = new ArrayList<>();
         mode = Search.BREADTH;
-        iteratorCount = 0;
+        modificationState = 0;
+    }
+
+    private void update() {
+        modificationState++;
+    }
+
+    private void propagate() {
+        Tree<E> node = this;
+
+        while (node.parent != null) {
+            node.update();
+            node = node.parent;
+        }
+
+        node.update();
     }
 
     /**
@@ -45,10 +64,14 @@ public class Tree<E> implements Iterable<E> {
      */
     public Tree<E> with(Search mode) throws NullPointerException {
         if (mode == null) {
-            throw new NullPointerException("can't set a null as a traverse mode");
+            throw new NullPointerException();
         }
 
+        propagate();
+
         this.mode = mode;
+        children.forEach(t -> t.with(mode));
+
         return this;
     }
 
@@ -58,7 +81,7 @@ public class Tree<E> implements Iterable<E> {
      * @return the quantity of nodes
      */
     public int size() {
-        return children.stream().mapToInt(Tree::size).reduce(Integer::sum).orElse(1);
+        return children.stream().mapToInt(Tree::size).sum() + 1;
     }
 
     /**
@@ -70,21 +93,13 @@ public class Tree<E> implements Iterable<E> {
      */
     @Override
     public Iterator<E> iterator() {
-        List<Tree<E>> descendants = null;
-
         if (mode == Search.BREADTH) {
-            descendants = breadthFirst();
+            return new BreadthIterator();
         } else if (mode == Search.DEPTH) {
-            descendants = depthFirst();
+            return new DepthIterator();
+        } else {
+            throw new IllegalStateException();
         }
-
-        assert descendants != null;
-
-        for (Tree<E> descendant : descendants) {
-            descendant.iteratorCount++;
-        }
-
-        return new TreeIterator<>(descendants);
     }
 
     /**
@@ -94,19 +109,17 @@ public class Tree<E> implements Iterable<E> {
      * @return {@code this}
      * @throws NullPointerException if {@code val} is {@code null}
      */
-    public Tree<E> add(E val) throws ConcurrentModificationException, NullPointerException {
+    public Tree<E> add(E val) throws NullPointerException {
         if (val == null) {
-            throw new NullPointerException("can't add a null value to a tree");
+            throw new NullPointerException();
         }
 
-        if (iteratorCount > 0) {
-            throw new ConcurrentModificationException(
-                    "can't add a value to a tree, as it has %d active iterators"
-                            .replace("%d", this.iteratorCount.toString())
-            );
-        }
+        propagate();
 
-        children.add(new Tree<>(val));
+        Tree<E> child = new Tree<>(val);
+        child.parent = this;
+        children.add(child);
+
         return this;
     }
 
@@ -115,23 +128,18 @@ public class Tree<E> implements Iterable<E> {
      *
      * @param branch a tree to add
      * @return {@code this}
-     * @throws ConcurrentModificationException if this tree has active iterators at the moment
      * @throws NullPointerException if {@code branch} is {@code null}
      */
-    public Tree<E> add(Tree<E> branch)
-            throws ConcurrentModificationException, NullPointerException {
+    public Tree<E> add(Tree<E> branch) throws NullPointerException {
         if (branch == null) {
-            throw new NullPointerException("can't add a null branch to a tree");
+            throw new NullPointerException();
         }
 
-        if (iteratorCount > 0) {
-            throw new ConcurrentModificationException(
-                    "can't add a branch to a tree, as it has %d active iterators"
-                            .replace("%d", this.iteratorCount.toString())
-            );
-        }
+        propagate();
 
+        branch.parent = this;
         children.add(branch);
+
         return this;
     }
 
@@ -140,7 +148,7 @@ public class Tree<E> implements Iterable<E> {
      *
      * @return the value in this node
      */
-    public E get() {
+    public E getValue() {
         return this.value;
     }
 
@@ -152,8 +160,17 @@ public class Tree<E> implements Iterable<E> {
      * @throws IndexOutOfBoundsException if the index is out of range {@code index < 0 || index >=
      *     children.size()}
      */
-    public Tree<E> get(int index) throws IndexOutOfBoundsException {
+    public Tree<E> getBranch(int index) throws IndexOutOfBoundsException {
         return children.get(index);
+    }
+
+    /**
+     * Get the parent of this tree.
+     *
+     * @return the parent
+     */
+    public Tree<E> getParent() {
+        return parent;
     }
 
     /**
@@ -161,19 +178,11 @@ public class Tree<E> implements Iterable<E> {
      *
      * @param val value to set
      * @return {@code this}
-     * @throws ConcurrentModificationException if this tree has active iterators at the moment
      * @throws NullPointerException if {@code val} is {@code null}
      */
-    public Tree<E> set(E val) throws ConcurrentModificationException, NullPointerException {
+    public Tree<E> setValue(E val) throws NullPointerException {
         if (val == null) {
-            throw new NullPointerException("can't set a null value as a tree value");
-        }
-
-        if (iteratorCount > 0) {
-            throw new ConcurrentModificationException(
-                    "can't add a branch to a tree, as it has %d active iterators"
-                            .replace("%d", this.iteratorCount.toString())
-            );
+            throw new NullPointerException();
         }
 
         value = val;
@@ -189,52 +198,93 @@ public class Tree<E> implements Iterable<E> {
      *     children.size()}
      */
     public Tree<E> remove(int index) throws IndexOutOfBoundsException {
-        return children.remove(index);
+        Tree<E> child = children.remove(index);
+        child.parent = null;
+
+        propagate();
+
+        return child;
     }
 
-    private List<Tree<E>> breadthFirst() {
-        Queue<Tree<E>> queue = new ArrayDeque<>();
-        List<Tree<E>> descendants = new ArrayList<>(this.size());
+    private abstract class TreeIterator implements Iterator<E> {
+        private final Tree<E> root;
+        private final int modificationState;
 
-        queue.add(this);
-
-        while (!queue.isEmpty()) {
-            Tree<E> descendant = queue.poll();
-            descendants.add(descendant);
-            queue.addAll(descendant.children);
+        private TreeIterator() {
+            root = Tree.this;
+            modificationState = Tree.this.modificationState;
         }
 
-        return descendants;
-    }
+        @Override
+        public E next() throws ConcurrentModificationException {
+            if (root.modificationState != modificationState) {
+                throw new ConcurrentModificationException();
+            }
 
-    private List<Tree<E>> depthFirst() {
-        List<Tree<E>> descendants = new ArrayList<>(this.size());
-
-        descendants.add(this);
-        for (Tree<E> descendant : children) {
-            descendants.addAll(descendant.depthFirst());
+            return null;
         }
-
-        return descendants;
     }
 
-    private static class TreeIterator<T> implements Iterator<T> {
-        private final Iterator<Tree<T>> descendants;
+    private class BreadthIterator implements Iterator<E> {
+        private final Queue<Tree<E>> queue;
+        private final Tree<E> root;
+        private final int modificationState;
 
-        private TreeIterator(List<Tree<T>> traversed) {
-            descendants = traversed.iterator();
+        private BreadthIterator() {
+            queue = new ArrayDeque<>();
+            queue.add(Tree.this);
+            root = Tree.this;
+            modificationState = Tree.this.modificationState;
         }
 
         @Override
         public boolean hasNext() {
-            return descendants.hasNext();
+            return !queue.isEmpty();
         }
 
         @Override
-        public T next() throws NoSuchElementException {
-            Tree<T> descendant = descendants.next();
-            descendant.iteratorCount--;
-            return descendant.value;
+        public E next() throws ConcurrentModificationException, NoSuchElementException {
+
+
+            Tree<E> polled = queue.poll();
+            if (polled == null) {
+                throw new NoSuchElementException();
+            }
+
+            queue.addAll(polled.children);
+
+            return polled.value;
+        }
+    }
+
+    private class DepthIterator implements Iterator<E> {
+        private final Stack<Tree<E>> stack;
+        private final int modificationState;
+
+        private DepthIterator() {
+            stack = new Stack<>();
+            stack.push(Tree.this);
+            modificationState = 0;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return !stack.isEmpty();
+        }
+
+        @Override
+        public E next() throws ConcurrentModificationException, NoSuchElementException {
+            Tree<E> popped;
+
+            try {
+                popped = stack.pop();
+            } catch (EmptyStackException e) {
+                throw new NoSuchElementException();
+            }
+
+            stack.addAll(0, popped.children);
+
+            return null;
         }
     }
 
