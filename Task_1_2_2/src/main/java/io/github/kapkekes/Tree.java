@@ -3,12 +3,9 @@ package io.github.kapkekes;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
-import java.util.EmptyStackException;
 import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Queue;
-import java.util.Stack;
 
 /**
  * Generic tree class. Each node contains a value and a list of its children.
@@ -38,6 +35,24 @@ public class Tree<E> implements Iterable<E> {
         children = new ArrayList<>();
         mode = Search.BREADTH;
         modificationState = 0;
+    }
+
+    /**
+     * Returns an iterator over the elements in this tree in proper sequence. Order of the
+     * elements will be defined by {@code mode} field; use {@code with()} method to specify needed
+     * traverse option.
+     *
+     * @return an iterator over the elements
+     */
+    @Override
+    public Iterator<E> iterator() {
+        if (mode == Search.BREADTH) {
+            return new BreadthIterator();
+        } else if (mode == Search.DEPTH) {
+            return new DepthIterator();
+        } else {
+            throw new IllegalStateException();
+        }
     }
 
     private void update() {
@@ -82,24 +97,6 @@ public class Tree<E> implements Iterable<E> {
      */
     public int size() {
         return children.stream().mapToInt(Tree::size).sum() + 1;
-    }
-
-    /**
-     * Returns an iterator over the elements in this tree in proper sequence. Order of the
-     * elements will be defined by {@code mode} field; use {@code with()} method to specify needed
-     * traverse option.
-     *
-     * @return an iterator over the elements
-     */
-    @Override
-    public Iterator<E> iterator() {
-        if (mode == Search.BREADTH) {
-            return new BreadthIterator();
-        } else if (mode == Search.DEPTH) {
-            return new DepthIterator();
-        } else {
-            throw new IllegalStateException();
-        }
     }
 
     /**
@@ -207,12 +204,20 @@ public class Tree<E> implements Iterable<E> {
     }
 
     private abstract class TreeIterator implements Iterator<E> {
+        protected final ArrayDeque<Tree<E>> deque;
         private final Tree<E> root;
         private final int modificationState;
 
         private TreeIterator() {
+            deque = new ArrayDeque<>();
+            deque.add(Tree.this);
             root = Tree.this;
             modificationState = Tree.this.modificationState;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return !deque.isEmpty();
         }
 
         @Override
@@ -225,64 +230,34 @@ public class Tree<E> implements Iterable<E> {
         }
     }
 
-    private class BreadthIterator implements Iterator<E> {
-        private final Queue<Tree<E>> queue;
-        private final Tree<E> root;
-        private final int modificationState;
-
-        private BreadthIterator() {
-            queue = new ArrayDeque<>();
-            queue.add(Tree.this);
-            root = Tree.this;
-            modificationState = Tree.this.modificationState;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return !queue.isEmpty();
-        }
-
+    private class BreadthIterator extends TreeIterator {
         @Override
         public E next() throws ConcurrentModificationException, NoSuchElementException {
+            super.next();
 
-
-            Tree<E> polled = queue.poll();
+            Tree<E> polled = deque.poll();
             if (polled == null) {
                 throw new NoSuchElementException();
             }
 
-            queue.addAll(polled.children);
+            deque.addAll(polled.children);
 
             return polled.value;
         }
     }
 
-    private class DepthIterator implements Iterator<E> {
-        private final Stack<Tree<E>> stack;
-        private final int modificationState;
-
-        private DepthIterator() {
-            stack = new Stack<>();
-            stack.push(Tree.this);
-            modificationState = 0;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return !stack.isEmpty();
-        }
-
+    private class DepthIterator extends TreeIterator {
         @Override
         public E next() throws ConcurrentModificationException, NoSuchElementException {
+            super.next();
+
             Tree<E> popped;
 
-            try {
-                popped = stack.pop();
-            } catch (EmptyStackException e) {
-                throw new NoSuchElementException();
-            }
+            popped = deque.pop();
 
-            stack.addAll(0, popped.children);
+            for (int i = popped.children.size() - 1; i >= 0; i--) {
+                deque.addFirst(popped.children.get(i));
+            }
 
             return null;
         }
