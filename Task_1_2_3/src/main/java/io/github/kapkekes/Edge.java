@@ -1,9 +1,11 @@
 package io.github.kapkekes;
 
 /**
- * Interface, which defines an edge for usage with the graph and the vertex interfaces.
+ * Interface, representing an edge structure.
+ * <p>
+ * Consists of two objects, which implement {@code Vertex<V>}.
  *
- * @param <V> type of the name in the vertices
+ * @param <V> type of the name, used by {@code Vertex<V>}
  */
 public interface Edge<V> {
     /**

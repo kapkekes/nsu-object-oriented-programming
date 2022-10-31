@@ -3,7 +3,7 @@ package io.github.kapkekes;
 /**
  * Interface, which defines a vertex for usage with the graph and the edge interfaces.
  *
- * @param <V> type of the name in the vertex
+ * @param <V> type of the name
  */
 public interface Vertex<V> {
     /**
