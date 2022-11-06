@@ -2,6 +2,7 @@ package io.github.kapkekes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class OrientedWeightedGraph<V> implements Graph<V> {
     private final List<Vertex<V>> vertices;
@@ -21,12 +22,12 @@ public class OrientedWeightedGraph<V> implements Graph<V> {
     }
 
     @Override
-    public Vertex<V> getVertex(V name) {
+    public Optional<Vertex<V>> getVertex(V name) {
         return null;
     }
 
     @Override
-    public Edge<V> getEdge(Vertex<V> a, Vertex<V> b) {
+    public Optional<Edge<V>> getEdge(Vertex<V> a, Vertex<V> b) {
         return null;
     }
 }
