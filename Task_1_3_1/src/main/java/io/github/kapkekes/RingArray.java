@@ -16,7 +16,7 @@ public class RingArray<E> {
      *
      * @param size the size of <i>init</i> and <i>ring</i> parts of the buffer
      */
-    public RingArray (int size) {
+    public RingArray(int size) {
         array = new Object[2 * size];
         this.size = size;
     }
@@ -29,7 +29,7 @@ public class RingArray<E> {
      * @return {@code this}
      * @throws NoSuchElementException if {@code index < 0}
      */
-    public RingArray<E> set (int index, E val) {
+    public RingArray<E> set(int index, E val) {
         if (index < 0) {
             throw new NoSuchElementException();
         }
@@ -51,7 +51,7 @@ public class RingArray<E> {
      * @throws NoSuchElementException if {@code index < 0}
      */
     @SuppressWarnings("unchecked")
-    public E get (int index) throws NoSuchElementException{
+    public E get(int index) throws NoSuchElementException {
         if (index < 0) {
             throw new NoSuchElementException();
         }

@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 /** Utility class for methods, based on Z-function of the string. */
-public class ZFunction {
+public class StringUtilities {
     /**
      * Calculate Z-function of the given string.
      *
