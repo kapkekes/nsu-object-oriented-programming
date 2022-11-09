@@ -1,6 +1,8 @@
 package io.github.kapkekes;
 
+import java.io.BufferedReader;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -36,5 +38,17 @@ public class ZFunction {
         }
 
         return z;
+    }
+
+    /**
+     * Find the first occurrence of the {@code pattern} in the {@code text} and return it index.
+     *
+     * @param pattern the pattern to match
+     * @param text target
+     * @return {@code Optional<Integer>} if there is an occurrence in the text. Otherwise,
+     *     {@code Optional.empty()}
+     */
+    public static Optional<Integer> substringIndex(String pattern, BufferedReader text) {
+        return Optional.empty();
     }
 }
