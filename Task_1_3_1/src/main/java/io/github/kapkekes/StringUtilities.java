@@ -15,7 +15,7 @@ public class StringUtilities {
      * @param string the string to calculate
      * @return a list of integers
      */
-    public static List<Integer> zFunction(String string) {
+    public static List<Integer> functionZ(String string) {
         int len = string.length();
         int left = 0;
         int right = 0;
