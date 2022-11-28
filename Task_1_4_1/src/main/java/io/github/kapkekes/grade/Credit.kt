@@ -1,13 +1,14 @@
 package io.github.kapkekes.grade
 
-/** Provides possible marks for credits. */
+/** Provides possible grades for credits. */
 enum class Credit(
     /**
-     * Return the point measurement of this result.
+     * Return the point measurement of this credit.
      *
      * @return the quantity of the points
      */
     val points: Int
 ) {
-    FAIL(0), PASS(5);
+    FAIL(0),
+    PASS(5),
 }
