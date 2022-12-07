@@ -1,12 +1,8 @@
 package io.github.kapkekes.grade
 
 /** Provides possible grades for differential credits and exams. */
-sealed class Mark(
+enum class Mark(
     override val points: Int
 ): Grade {
-    object BAD : Mark(1)
-    object POOR : Mark(2)
-    object SATISFACTORY : Mark(3)
-    object GOOD : Mark(4)
-    object EXCELLENT : Mark(5)
+    BAD(1), POOR(2), SATISFACTORY(3), GOOD(4), EXCELLENT(5)
 }
