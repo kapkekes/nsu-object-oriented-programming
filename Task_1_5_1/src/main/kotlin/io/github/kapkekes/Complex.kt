@@ -1,5 +1,6 @@
 package io.github.kapkekes
 
+import kotlin.math.absoluteValue
 import kotlin.math.sqrt
 
 class Complex(
@@ -60,6 +61,10 @@ class Complex(
     }
 
     operator fun div(divider: Double): Complex {
+        if (divider == 0.0) {
+            throw ArithmeticException("Zero division: $this / $divider")
+        }
+
         return Complex(
             real / divider,
             imaginary / divider,
@@ -67,6 +72,22 @@ class Complex(
     }
 
     operator fun div(divider: Complex): Complex {
+        if (isReal) {
+            return this / divider
+        }
+
+        if (divider.real == 0.0 && divider.imaginary == 0.0) {
+            throw ArithmeticException("Zero division:  $this / $divider")
+        }
+
         return this * divider.conjugate / (divider.real * divider.real + divider.imaginary * divider.imaginary)
+    }
+
+    override fun toString(): String {
+        return if (isReal) {
+            real.toString()
+        } else {
+            "$real ${ if (imaginary > 0) '+' else '-' } ${imaginary.absoluteValue}i"
+        }
     }
 }
