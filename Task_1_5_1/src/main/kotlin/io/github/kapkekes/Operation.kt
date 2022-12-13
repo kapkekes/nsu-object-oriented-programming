@@ -1,9 +1,9 @@
 package io.github.kapkekes
 
-typealias Action = (List<Number>) -> Number
+typealias Action = (List<Complex>) -> Complex
 
-interface Operation: Token {
-    val arity: Int
+interface Operation {
     val token: String
+    val arity: Int
     val action: Action
 }
