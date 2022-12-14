@@ -1,6 +1,7 @@
 package io.github.kapkekes
 
 import kotlin.math.absoluteValue
+import kotlin.math.pow
 import kotlin.math.sqrt
 
 class Complex(
@@ -9,7 +10,19 @@ class Complex(
 ) {
     val isReal: Boolean by lazy { imaginary == 0.0 }
     val conjugate: Complex by lazy { Complex(real, -imaginary) }
-    val modulus: Double by lazy { sqrt(real * real + imaginary * imaginary) }
+    val abs: Double by lazy { sqrt(real * real + imaginary * imaginary) }
+
+    fun pow(x: Complex): Complex {
+        return if (!x.isReal) {
+            throw ArithmeticException("Complex power isn't supported: ($this) ^ ($x)")
+        } else if (this.isReal) {
+            Complex(this.real.pow(x.real))
+        } else if (x.real.rem(1.0) != 0.0 || x.real < 0.0) {
+            throw ArithmeticException("Real power of complex number isn't supported: ($this) ^ $x")
+        } else {
+            Complex(1.0).apply { repeat(x.real.toInt()) { times(this) } }
+        }
+    }
 
     operator fun unaryMinus(): Complex {
         return Complex(
