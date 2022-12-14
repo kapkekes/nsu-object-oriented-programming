@@ -1,6 +1,8 @@
 package io.github.kapkekes
 
+import kotlin.math.cos
 import kotlin.math.sign
+import kotlin.math.sin
 
 fun sqrt(x: Complex): Complex {
     return if (!x.isReal) {
@@ -30,5 +32,25 @@ fun log(x: Complex, base: Complex): Complex {
         )
     } else {
         Complex(kotlin.math.log(x.real, base.real))
+    }
+}
+
+fun sin(x: Complex): Complex {
+    return if (x.isReal) {
+        Complex(sin(x.real))
+    } else {
+        throw ArithmeticException(
+            "Complex sine isn't supported: sin($x)"
+        )
+    }
+}
+
+fun cos(x: Complex): Complex {
+    return if (x.isReal) {
+        Complex(cos(x.real))
+    } else {
+        throw ArithmeticException(
+            "Complex cosine isn't supported: cos($x)"
+        )
     }
 }
