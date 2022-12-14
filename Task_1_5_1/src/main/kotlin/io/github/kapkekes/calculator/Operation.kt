@@ -1,4 +1,6 @@
-package io.github.kapkekes
+package io.github.kapkekes.calculator
+
+import io.github.kapkekes.complex.Complex
 
 typealias Action = (List<Complex>) -> Complex
 
