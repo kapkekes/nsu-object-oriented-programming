@@ -1,4 +1,4 @@
-package io.github.kapkekes
+package io.github.kapkekes.complex
 
 import kotlin.math.cos
 import kotlin.math.sign

@@ -1,4 +1,4 @@
-package io.github.kapkekes
+package io.github.kapkekes.complex
 
 import kotlin.math.absoluteValue
 import kotlin.math.pow
