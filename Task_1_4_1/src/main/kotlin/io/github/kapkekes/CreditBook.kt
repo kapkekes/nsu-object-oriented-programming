@@ -77,16 +77,5 @@ class CreditBook(
         return pages[semester][name]
     }
 
-    fun removeSubject(semester: Int, name: String): Subject? {
-        if (semester !in pages.indices) {
-            return null
-        }
-
-        subjectEntries[name]?.remove(semester)
-        if ((subjectEntries[name]?.size ?: 1) == 0) {
-            subjectEntries.remove(name)
-        }
-
-        return pages[semester].remove(name)
-    }
+    data class Subject(val name: String, val lecturer: Person, var grade: Grade? = null)
 }
