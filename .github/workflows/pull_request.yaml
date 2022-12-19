@@ -12,7 +12,8 @@ jobs:
       run:
         working-directory: ./${{ github.event.pull_request.title }}
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
@@ -35,16 +36,47 @@ jobs:
           min-coverage-overall: 80
           min-coverage-changed-files: 80
 
+      - name: Discover used languages
+        id: discover
+        run: |
+          if [[ -d "src/main/java" ]]; then
+            echo "java=true" >> $GITHUB_OUTPUT
+          else
+            echo "java=false" >> $GITHUB_OUTPUT
+          fi
+
+          if [[ -d "src/main/kotlin" ]]; then
+            echo "kotlin=true" >> $GITHUB_OUTPUT
+          else
+            echo "kotlin=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Generate javadoc
+        if: ${{ steps.discover.outputs.java == 'true' }}
         run: ./gradlew javadoc
 
       - name: Publish javadoc
+        if: ${{ steps.discover.outputs.java == 'true' }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           clean: true
           folder: ${{ github.event.pull_request.title }}/build/docs/javadoc
+          target-folder: ${{ github.event.pull_request.title }}
+
+      - name: Generate dokka
+        if: ${{ steps.discover.outputs.kotlin == 'true' }}
+        run: ./gradlew dokkaHtml
+
+      - name: Publish dokka
+        if: ${{ steps.discover.outputs.kotlin == 'true' }}
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          clean: true
+          folder: ${{ github.event.pull_request.title }}/build/dokka/html
           target-folder: ${{ github.event.pull_request.title }}
 
   checkstyle:
