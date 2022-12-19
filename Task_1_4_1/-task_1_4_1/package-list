@@ -1,0 +1,44 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:io.github.kapkekes.grade////PointingToDeclaration/-task_1_4_1/io.github.kapkekes.grade/index.html
+$dokka.location:io.github.kapkekes.grade/Credit.FAIL///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-task_1_4_1/io.github.kapkekes.grade/-credit/-f-a-i-l/index.html
+$dokka.location:io.github.kapkekes.grade/Credit.PASS///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-task_1_4_1/io.github.kapkekes.grade/-credit/-p-a-s-s/index.html
+$dokka.location:io.github.kapkekes.grade/Credit///PointingToDeclaration/-task_1_4_1/io.github.kapkekes.grade/-credit/index.html
+$dokka.location:io.github.kapkekes.grade/Credit/points/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes.grade/-credit/points.html
+$dokka.location:io.github.kapkekes.grade/Credit/valueOf/#kotlin.String/PointingToDeclaration/-task_1_4_1/io.github.kapkekes.grade/-credit/value-of.html
+$dokka.location:io.github.kapkekes.grade/Credit/values/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes.grade/-credit/values.html
+$dokka.location:io.github.kapkekes.grade/Grade///PointingToDeclaration/-task_1_4_1/io.github.kapkekes.grade/-grade/index.html
+$dokka.location:io.github.kapkekes.grade/Grade/points/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes.grade/-grade/points.html
+$dokka.location:io.github.kapkekes.grade/Mark.BAD///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-task_1_4_1/io.github.kapkekes.grade/-mark/-b-a-d/index.html
+$dokka.location:io.github.kapkekes.grade/Mark.EXCELLENT///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-task_1_4_1/io.github.kapkekes.grade/-mark/-e-x-c-e-l-l-e-n-t/index.html
+$dokka.location:io.github.kapkekes.grade/Mark.GOOD///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-task_1_4_1/io.github.kapkekes.grade/-mark/-g-o-o-d/index.html
+$dokka.location:io.github.kapkekes.grade/Mark.POOR///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-task_1_4_1/io.github.kapkekes.grade/-mark/-p-o-o-r/index.html
+$dokka.location:io.github.kapkekes.grade/Mark.SATISFACTORY///PointingToDeclaration/{"org.jetbrains.dokka.links.EnumEntryDRIExtra":{"key":"org.jetbrains.dokka.links.EnumEntryDRIExtra"}}-task_1_4_1/io.github.kapkekes.grade/-mark/-s-a-t-i-s-f-a-c-t-o-r-y/index.html
+$dokka.location:io.github.kapkekes.grade/Mark///PointingToDeclaration/-task_1_4_1/io.github.kapkekes.grade/-mark/index.html
+$dokka.location:io.github.kapkekes.grade/Mark/points/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes.grade/-mark/points.html
+$dokka.location:io.github.kapkekes.grade/Mark/valueOf/#kotlin.String/PointingToDeclaration/-task_1_4_1/io.github.kapkekes.grade/-mark/value-of.html
+$dokka.location:io.github.kapkekes.grade/Mark/values/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes.grade/-mark/values.html
+$dokka.location:io.github.kapkekes////PointingToDeclaration/-task_1_4_1/io.github.kapkekes/index.html
+$dokka.location:io.github.kapkekes/CreditBook.Subject///PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/-subject/index.html
+$dokka.location:io.github.kapkekes/CreditBook.Subject/Subject/#kotlin.String#io.github.kapkekes.Person#io.github.kapkekes.grade.Grade/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/-subject/-subject.html
+$dokka.location:io.github.kapkekes/CreditBook.Subject/grade/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/-subject/grade.html
+$dokka.location:io.github.kapkekes/CreditBook.Subject/lecturer/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/-subject/lecturer.html
+$dokka.location:io.github.kapkekes/CreditBook.Subject/name/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/-subject/name.html
+$dokka.location:io.github.kapkekes/CreditBook///PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/index.html
+$dokka.location:io.github.kapkekes/CreditBook/CreditBook/#kotlin.Int/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/-credit-book.html
+$dokka.location:io.github.kapkekes/CreditBook/addSubject/#kotlin.Int#kotlin.String#io.github.kapkekes.Person#io.github.kapkekes.grade.Grade/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/add-subject.html
+$dokka.location:io.github.kapkekes/CreditBook/canGetHonoured/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/can-get-honoured.html
+$dokka.location:io.github.kapkekes/CreditBook/diplomaGrade/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/diploma-grade.html
+$dokka.location:io.github.kapkekes/CreditBook/getCurrentTerm/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/get-current-term.html
+$dokka.location:io.github.kapkekes/CreditBook/getDiplomaAverage/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/get-diploma-average.html
+$dokka.location:io.github.kapkekes/CreditBook/getGPA/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/get-g-p-a.html
+$dokka.location:io.github.kapkekes/CreditBook/getSubject/#kotlin.Int#kotlin.String/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/get-subject.html
+$dokka.location:io.github.kapkekes/CreditBook/isStipendIncreased/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-credit-book/is-stipend-increased.html
+$dokka.location:io.github.kapkekes/Person///PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-person/index.html
+$dokka.location:io.github.kapkekes/Person/Person/#kotlin.String#kotlin.String#kotlin.String?/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-person/-person.html
+$dokka.location:io.github.kapkekes/Person/name/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-person/name.html
+$dokka.location:io.github.kapkekes/Person/patronymic/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-person/patronymic.html
+$dokka.location:io.github.kapkekes/Person/surname/#/PointingToDeclaration/-task_1_4_1/io.github.kapkekes/-person/surname.html
+io.github.kapkekes
+io.github.kapkekes.grade
+
