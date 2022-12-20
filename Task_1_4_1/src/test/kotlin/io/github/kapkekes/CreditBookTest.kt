@@ -29,28 +29,28 @@ class CreditBookTest {
         creditBook = CreditBook()
 
         listOf<Triple<String, Person, Grade>>(
-            Triple("Introduction to Calculus",                       vaskevich,        Mark.GOOD        ),
-            Triple("Introduction to Discrete Mathematics and Logic", vlasovModern,     Mark.GOOD        ),
-            Triple("Imperative Programming",                         gatilov,          Mark.GOOD        ),
-            Triple("Basics of Speech Culture",                       zavorina,         Mark.EXCELLENT   ),
-            Triple("Declarative Programming",                        vlasovPostModern, Mark.EXCELLENT   ),
-            Triple("History",                                        oplakanskaya,     Mark.EXCELLENT   ),
-            Triple("Digital Platforms",                              irtegov,          Credit.PASS      ),
-            Triple("Foreign Language",                               khotskina,        Credit.PASS      ),
-            Triple("Physical Education",                             oparin,           Credit.PASS      ),
+            Triple("Introduction to Calculus", vaskevich, Mark.GOOD),
+            Triple("Introduction to Discrete Mathematics and Logic", vlasovModern, Mark.GOOD),
+            Triple("Imperative Programming", gatilov, Mark.GOOD),
+            Triple("Basics of Speech Culture", zavorina, Mark.EXCELLENT),
+            Triple("Declarative Programming", vlasovPostModern, Mark.EXCELLENT),
+            Triple("History", oplakanskaya, Mark.EXCELLENT),
+            Triple("Digital Platforms", irtegov, Credit.PASS),
+            Triple("Foreign Language", khotskina, Credit.PASS),
+            Triple("Physical Education", oparin, Credit.PASS),
         ).forEach {
             creditBook.addSubject(1, it.first, it.second, it.third)
         }
 
         listOf<Triple<String, Person, Grade>>(
-            Triple("Introduction to Calculus",                       vaskevich,        Mark.SATISFACTORY),
-            Triple("Digital Platforms",                              irtegov,          Mark.GOOD        ),
-            Triple("Foreign Language",                               khotskina,        Mark.GOOD        ),
-            Triple("Imperative Programming",                         gatilov,          Mark.GOOD        ),
-            Triple("Declarative Programming",                        vlasovPostModern, Mark.EXCELLENT   ),
-            Triple("Introduction to Discrete Mathematics and Logic", apanovich,        Mark.EXCELLENT   ),
-            Triple("Measuring Practicum",                            belousov,         Credit.PASS      ),
-            Triple("Physical Education",                             oparin,           Credit.PASS      ),
+            Triple("Introduction to Calculus", vaskevich, Mark.SATISFACTORY),
+            Triple("Digital Platforms", irtegov, Mark.GOOD),
+            Triple("Foreign Language", khotskina, Mark.GOOD),
+            Triple("Imperative Programming", gatilov, Mark.GOOD),
+            Triple("Declarative Programming", vlasovPostModern, Mark.EXCELLENT),
+            Triple("Introduction to Discrete Mathematics and Logic", apanovich, Mark.EXCELLENT),
+            Triple("Measuring Practicum", belousov, Credit.PASS),
+            Triple("Physical Education", oparin, Credit.PASS),
         ).forEach {
             creditBook.addSubject(2, it.first, it.second, it.third)
         }
@@ -76,7 +76,7 @@ class CreditBookTest {
                 1,
                 "Introduction to Calculus",
                 Person("Vladimir", "Vaskevich", "Leontevich"),
-                Mark.GOOD
+                Mark.GOOD,
             )
         }
     }
