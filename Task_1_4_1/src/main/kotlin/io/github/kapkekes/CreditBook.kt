@@ -4,14 +4,15 @@ import io.github.kapkekes.grade.Credit
 import io.github.kapkekes.grade.Grade
 import kotlin.jvm.Throws
 
-
 /**
  * Represents a simple credit book.
  *
  * @param termsQuantity the quantity of terms in the constructed [CreditBook].
  * @throws IllegalArgumentException if quantity of terms is non-positive.
  */
-class CreditBook @Throws(IllegalArgumentException::class) constructor(termsQuantity: Int = 8) {
+class CreditBook
+@Throws(IllegalArgumentException::class)
+constructor(termsQuantity: Int = 8) {
     init { // validate primary constructor
         require(termsQuantity > 0) { "[termsQuantity] should be positive" }
     }
@@ -30,12 +31,12 @@ class CreditBook @Throws(IllegalArgumentException::class) constructor(termsQuant
         get() {
             val supplementReq = subjectEntries.map { (name, entries) ->
                 pages[entries.max()][name]!!.grade.points
-            } .count { it == 5 } > (subjectEntries.count() * 0.75)
+            }.count { it == 5 } > (subjectEntries.count() * 0.75)
 
             val bookReq = pages.all { page ->
                 page.values.map { subject ->
                     subject.grade.points
-                } .all { it >= 4 }
+                }.all { it >= 4 }
             }
 
             val diplomaReq = diplomaGrade?.points == 5
@@ -57,30 +58,30 @@ class CreditBook @Throws(IllegalArgumentException::class) constructor(termsQuant
     /** Returns the grade point average. */
     fun getGPA(): Double {
         return pages.flatMap { page: Map<String, Subject> ->
-            page.values.map {subject: Subject ->
+            page.values.map { subject: Subject ->
                 subject.grade
-            } .filter { grade: Grade ->
+            }.filter { grade: Grade ->
                 grade !is Credit
-            } .map { mark ->
+            }.map { mark ->
                 mark.points
             }
-        } .average()
+        }.average()
     }
 
     /** Returns the diploma average grade. */
     fun getDiplomaAverage(): Double {
         return subjectEntries.map { (name, entries) ->
             pages[entries.max()][name]!!.grade
-        } .filter { grade: Grade ->
+        }.filter { grade: Grade ->
             grade !is Credit
-        } .map { mark ->
+        }.map { mark ->
             mark.points
-        } .average()
+        }.average()
     }
 
     /** Returns the current term number. */
     fun getCurrentTerm(): Int {
-        return subjectEntries.map { (_, entries) -> entries.max() } .max() + 1
+        return subjectEntries.map { (_, entries) -> entries.max() }.max() + 1
     }
 
     /**
