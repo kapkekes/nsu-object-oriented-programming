@@ -7,8 +7,11 @@ import kotlin.jvm.Throws
 /**
  * Represents a simple credit book.
  *
- * @param termsQuantity the quantity of terms in the constructed [CreditBook].
- * @throws IllegalArgumentException if quantity of terms is non-positive.
+ * @property diplomaGrade The diploma grade of this [CreditBook].
+ * @property canGetHonoured Reflects possibility of getting a diploma with honour.
+ * @property isStipendIncreased Reflects possibility of getting an increased stipend in this term.
+ * @param termsQuantity The quantity of terms in the constructed [CreditBook].
+ * @throws IllegalArgumentException If quantity of terms is non-positive.
  */
 class CreditBook
 @Throws(IllegalArgumentException::class)
@@ -20,13 +23,11 @@ constructor(termsQuantity: Int = 8) {
     private val pages: List<MutableMap<String, Subject>> = List(termsQuantity) { HashMap() }
     private val subjectEntries: MutableMap<String, MutableSet<Int>> = HashMap()
 
-    /** Current diploma grade, set to null by default. */
     var diplomaGrade: Grade? = null
         set(value) {
             field = value ?: throw NullPointerException("Can't set diplomaGrade to null")
         }
 
-    /** Returns a [Boolean] value depending on if the student can get a diploma with honour. */
     val canGetHonoured: Boolean
         get() {
             val supplementReq = subjectEntries.map { (name, entries) ->
@@ -44,7 +45,6 @@ constructor(termsQuantity: Int = 8) {
             return supplementReq && bookReq && diplomaReq
         }
 
-    /** Returns a [Boolean] value depending on if the student gets an increased stipend in this semester. */
     val isStipendIncreased: Boolean
         get() {
             val current = getCurrentTerm()
@@ -55,7 +55,11 @@ constructor(termsQuantity: Int = 8) {
             return pages[current - 1 - 1].values.all { it.grade.points == 5 }
         }
 
-    /** Returns the grade point average. */
+    /**
+     * Calculates the grade point average.
+     *
+     * @return The grade point average.
+     */
     fun getGPA(): Double {
         return pages.flatMap { page: Map<String, Subject> ->
             page.values.map { subject: Subject ->
@@ -68,7 +72,11 @@ constructor(termsQuantity: Int = 8) {
         }.average()
     }
 
-    /** Returns the diploma average grade. */
+    /**
+     * Calculates the diploma average grade.
+     *
+     * @return The diploma average grade.
+     */
     fun getDiplomaAverage(): Double {
         return subjectEntries.map { (name, entries) ->
             pages[entries.max()][name]!!.grade
@@ -79,47 +87,70 @@ constructor(termsQuantity: Int = 8) {
         }.average()
     }
 
-    /** Returns the current term number. */
+    /**
+     * Calculates the current term number depending on the last term with a mark.
+     *
+     * @return The current term number.
+     */
     fun getCurrentTerm(): Int {
         return subjectEntries.map { (_, entries) -> entries.max() }.max() + 1
     }
 
     /**
-     * Tries to add a [name] subject of [lecturer] with [grade] to the [semester].
+     * Add the [name] subject of [lecturer] with [grade] to the [term].
      *
-     * Throws [IllegalArgumentException] if the [name] subject already exists or the [semester] is out of range.
+     * @param term The target term.
+     * @param name The name of the subject.
+     * @param lecturer The person, who teach the subject.
+     * @param grade The grade, which was got by student.
+     * @return This [CreditBook].
+     * @throws IllegalArgumentException If the [name] subject already exists in this.
+     * @throws IndexOutOfBoundsException If the [term] is non-positive or greater than the defined quantity of terms.
      */
     @Throws(IllegalArgumentException::class)
-    fun addSubject(semester: Int, name: String, lecturer: Person, grade: Grade): CreditBook {
-        require(semester in 1..pages.size) {
-            "this book consists from ${pages.size} semesters, can't find semester #$semester"
+    fun addSubject(term: Int, name: String, lecturer: Person, grade: Grade): CreditBook {
+        if (term !in 1..pages.size) {
+            throw IndexOutOfBoundsException(
+                "this book consists from ${pages.size} semesters, can't find term #$term",
+            )
         }
 
-        val real = semester - 1
+        val realTerm = term - 1
 
-        require(name !in pages[real].keys) {
-            "$name already exists in semester #$semester"
+        require(name !in pages[realTerm].keys) {
+            "$name already exists in term #$term"
         }
 
         if (name !in subjectEntries.keys) {
             subjectEntries[name] = HashSet()
         }
 
-        subjectEntries[name]!!.add(real)
-        pages[real][name] = Subject(name, lecturer, grade)
+        subjectEntries[name]!!.add(realTerm)
+        pages[realTerm][name] = Subject(name, lecturer, grade)
 
         return this
     }
 
-    /** Returns the [name] subject from [semester] if it exists, null otherwise. */
-    fun getSubject(semester: Int, name: String): Subject? {
-        if (semester - 1 !in pages.indices) {
+    /**
+     * Returns the subject from this [CreditBook] if it exists, null otherwise.
+     *
+     * @param name The target subject.
+     * @param term The target term.
+     */
+    fun getSubject(term: Int, name: String): Subject? {
+        if (term - 1 !in pages.indices) {
             return null
         }
 
-        return pages[semester - 1][name]
+        return pages[term - 1][name]
     }
 
-    /** Represents a [Subject] field in [CreditBook]. */
+    /**
+     * Represents a [Subject] field in [CreditBook].
+     *
+     * @property name The name of the subject.
+     * @property lecturer The person, who teach the subject.
+     * @property grade The grade, which was got by student.
+     */
     data class Subject(val name: String, val lecturer: Person, val grade: Grade)
 }
