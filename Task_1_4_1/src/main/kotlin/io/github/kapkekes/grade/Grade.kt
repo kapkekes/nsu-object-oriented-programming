@@ -1,7 +1,10 @@
 package io.github.kapkekes.grade
 
-/** Base interface for grade types. */
+/**
+ * Base interface for grade types.
+ *
+ * @property points The point measurement of the grade.
+ */
 sealed interface Grade {
-    /** The point measurement of the grade. */
     val points: Int
 }
