@@ -18,6 +18,16 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
 }
 
+tasks.jar {
+    manifest {
+        attributes["Main-Class"] = "io.github.kapkekes.cli.AppKt"
+    }
+    configurations["compileClasspath"].forEach { file: File ->
+        from(zipTree(file.absoluteFile))
+    }
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
