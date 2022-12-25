@@ -11,10 +11,10 @@ typealias Action = (List<Complex>) -> Complex
  * @property arity A quantity of operands, which is required by this operation.
  * @property action A function, which will be applied to the list of [Complex] of [arity] length.
  */
-abstract class Operation {
-    abstract val token: String
-    abstract val arity: Int
-    abstract val action: Action
+interface Operation {
+    val token: String
+    val arity: Int
+    val action: Action
 
     val definition get() = Pair(token, Pair(arity, action))
 }
