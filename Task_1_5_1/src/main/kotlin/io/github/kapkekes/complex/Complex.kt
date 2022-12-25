@@ -27,7 +27,7 @@ class Complex(
     operator fun unaryMinus(): Complex {
         return Complex(
             -real,
-            -imaginary
+            -imaginary,
         )
     }
 
@@ -94,6 +94,21 @@ class Complex(
         }
 
         return this * divider.conjugate / (divider.real * divider.real + divider.imaginary * divider.imaginary)
+    }
+
+    override operator fun equals(other: Any?): Boolean {
+        return when (other) {
+            null -> false
+            is Double -> this.real == other
+            is Complex -> this.real == other.real && this.imaginary == other.imaginary
+            else -> false
+        }
+    }
+
+    override fun hashCode(): Int {
+        var result = real.hashCode()
+        result = 31 * result + imaginary.hashCode()
+        return result
     }
 
     override fun toString(): String {
