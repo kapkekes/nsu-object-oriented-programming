@@ -3,6 +3,7 @@ package io.github.kapkekes.operations.basic
 import io.github.kapkekes.Action
 import io.github.kapkekes.Operation
 
+/** Returns the product of two numbers. */
 object Multiplication : Operation {
     override val token: String = "*"
     override val arity: Int = 2

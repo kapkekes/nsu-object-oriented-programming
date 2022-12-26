@@ -73,27 +73,27 @@ class Complex(
         )
     }
 
-    operator fun div(divider: Double): Complex {
-        if (divider == 0.0) {
-            throw ArithmeticException("Zero division: $this / $divider")
+    operator fun div(divisor: Double): Complex {
+        if (divisor == 0.0) {
+            throw ArithmeticException("Zero division: $this / $divisor")
         }
 
         return Complex(
-            real / divider,
-            imaginary / divider,
+            real / divisor,
+            imaginary / divisor,
         )
     }
 
-    operator fun div(divider: Complex): Complex {
+    operator fun div(divisor: Complex): Complex {
         if (isReal) {
-            return this / divider
+            return this / divisor
         }
 
-        if (divider.real == 0.0 && divider.imaginary == 0.0) {
-            throw ArithmeticException("Zero division:  $this / $divider")
+        if (divisor.real == 0.0 && divisor.imaginary == 0.0) {
+            throw ArithmeticException("Zero division: $this / $divisor")
         }
 
-        return this * divider.conjugate / (divider.real * divider.real + divider.imaginary * divider.imaginary)
+        return this * divisor.conjugate / (divisor.real * divisor.real + divisor.imaginary * divisor.imaginary)
     }
 
     override operator fun equals(other: Any?): Boolean {
