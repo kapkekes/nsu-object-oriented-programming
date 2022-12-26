@@ -4,6 +4,7 @@ import io.github.kapkekes.Action
 import io.github.kapkekes.Operation
 import io.github.kapkekes.complex.cos
 
+/** Returns the cosine of the given number. */
 object Cosine : Operation {
     override val token: String = "cos"
     override val arity: Int = 1

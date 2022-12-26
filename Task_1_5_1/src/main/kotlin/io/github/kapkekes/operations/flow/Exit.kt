@@ -3,6 +3,7 @@ package io.github.kapkekes.operations.flow
 import io.github.kapkekes.Action
 import io.github.kapkekes.Operation
 
+/** Throws [RuntimeException]. */
 object Exit : Operation {
     override val token: String = "exit"
     override val arity: Int = 0
