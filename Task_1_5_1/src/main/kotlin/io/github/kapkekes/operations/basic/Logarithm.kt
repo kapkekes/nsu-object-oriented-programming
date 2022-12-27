@@ -2,7 +2,7 @@ package io.github.kapkekes.operations.basic
 
 import io.github.kapkekes.Action
 import io.github.kapkekes.Operation
-import io.github.kapkekes.complex.log
+import io.github.kapkekes.complex.extensions.log
 
 /** Returns the logarithm of the first number by base of the second. */
 object Logarithm : Operation {

@@ -1,7 +1,5 @@
 package io.github.kapkekes
 
-import io.github.kapkekes.complex.Complex
-
 typealias Action = (List<Complex>) -> Complex
 
 /**

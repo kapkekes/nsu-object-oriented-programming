@@ -2,7 +2,7 @@ package io.github.kapkekes.operations.basic
 
 import io.github.kapkekes.Action
 import io.github.kapkekes.Operation
-import io.github.kapkekes.complex.sqrt
+import io.github.kapkekes.complex.extensions.sqrt
 
 /** Returns the square root of the given number. */
 object SquareRoot : Operation {
