@@ -7,8 +7,8 @@ import io.github.kapkekes.Operation
  * Returns [True], if the numbers are real and the first number is greater less or equal to the second.
  * Throws [ArithmeticException] if the numbers are not real.
  */
-object LessOrEqual: Operation {
-    override val token: String = ">"
+object LessOrEqual : Operation {
+    override val token: String = "<="
     override val arity: Int = 2
     override val action: Action = { pair ->
         if (pair.all { it.isReal }) {

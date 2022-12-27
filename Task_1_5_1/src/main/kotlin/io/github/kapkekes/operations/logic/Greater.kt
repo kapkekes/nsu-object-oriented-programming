@@ -7,7 +7,7 @@ import io.github.kapkekes.Operation
  * Returns [True], if the numbers are real and the first number is greater than the second.
  * Throws [ArithmeticException] if the numbers are not real.
  */
-object Greater: Operation {
+object Greater : Operation {
     override val token: String = ">"
     override val arity: Int = 2
     override val action: Action = { pair ->
