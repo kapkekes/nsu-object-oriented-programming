@@ -41,7 +41,7 @@ class Calculator(
      * @throws IllegalStateException If there are too much or too few arguments.
      */
     fun evaluate(expression: String): Complex {
-        val tokenSequence = expression.split(' ').reversed()
+        val tokenSequence = expression.strip().split(' ').reversed()
         val stack: Stack<Complex> = Stack()
 
         for (token in tokenSequence) {
