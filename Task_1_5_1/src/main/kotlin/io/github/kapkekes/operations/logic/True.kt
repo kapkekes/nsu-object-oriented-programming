@@ -1,8 +1,8 @@
 package io.github.kapkekes.operations.logic
 
-import io.github.kapkekes.Action
-import io.github.kapkekes.Complex
-import io.github.kapkekes.Operation
+import io.github.kapkekes.calculator.Action
+import io.github.kapkekes.complex.Complex
+import io.github.kapkekes.calculator.Operation
 
 /** True representation as a [Complex]. */
 object True : Operation {

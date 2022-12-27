@@ -1,7 +1,7 @@
 package io.github.kapkekes.cli
 
-import io.github.kapkekes.Calculator
-import io.github.kapkekes.Operation
+import io.github.kapkekes.calculator.Calculator
+import io.github.kapkekes.calculator.Operation
 import io.github.kapkekes.operations.basic.Addition
 import io.github.kapkekes.operations.basic.Division
 import io.github.kapkekes.operations.basic.Logarithm
