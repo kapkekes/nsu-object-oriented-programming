@@ -1,9 +1,11 @@
-package io.github.kapkekes.complex
+package io.github.kapkekes.complex.extensions
 
+import io.github.kapkekes.Complex
 import kotlin.math.cos
 import kotlin.math.sign
 import kotlin.math.sin
 
+/** Computes the square root of the value [x]. */
 fun sqrt(x: Complex): Complex {
     return if (!x.isReal) {
         Complex(
@@ -13,10 +15,11 @@ fun sqrt(x: Complex): Complex {
     } else if (x.real >= 0) {
         Complex(kotlin.math.sqrt(x.real))
     } else {
-        throw ArithmeticException("Square root of negative argument: sqrt($x)")
+        throw ArithmeticException("Square root of negative real argument: sqrt($x)")
     }
 }
 
+/** Computes the logarithm of the value [x] to the given [base]. */
 fun log(x: Complex, base: Complex): Complex {
     return if (!x.isReal || !base.isReal) {
         throw ArithmeticException(
@@ -35,6 +38,7 @@ fun log(x: Complex, base: Complex): Complex {
     }
 }
 
+/** Computes the sine of the angle [x] given in radians. */
 fun sin(x: Complex): Complex {
     return if (x.isReal) {
         Complex(sin(x.real))
@@ -45,6 +49,7 @@ fun sin(x: Complex): Complex {
     }
 }
 
+/** Computes the cosine of the angle [x] given in radians. */
 fun cos(x: Complex): Complex {
     return if (x.isReal) {
         Complex(cos(x.real))
