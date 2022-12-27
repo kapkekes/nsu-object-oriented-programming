@@ -65,7 +65,7 @@ class GeneralTest {
     fun almostBrainfuckCalculator() {
         assertEquals(
             True.value,
-            calculator.evaluate("if true if = + 2 2i - 2 2i false true 2 "),
+            calculator.evaluate("if true if = + 2 2i - 2 2i false true 2"),
             0.0,
         )
     }
