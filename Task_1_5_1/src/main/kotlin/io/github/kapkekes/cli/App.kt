@@ -28,7 +28,7 @@ fun main() {
         Addition, Division, Logarithm, Multiplication, Power, SquareRoot, Subtraction,
         Exit,
         Equality, False, Greater, GreaterOrEqual, IfElse, Inequality, Less, LessOrEqual, True,
-        Cosine, Sine
+        Cosine, Sine,
     )
 
     val calculator = Calculator(operations)
