@@ -1,7 +1,7 @@
 package io.github.kapkekes.operations.basic
 
-import io.github.kapkekes.Action
-import io.github.kapkekes.Operation
+import io.github.kapkekes.calculator.Action
+import io.github.kapkekes.calculator.Operation
 
 /** Returns the power of the first number to the second. */
 object Power : Operation {

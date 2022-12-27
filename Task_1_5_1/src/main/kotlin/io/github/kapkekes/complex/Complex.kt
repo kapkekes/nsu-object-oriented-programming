@@ -1,4 +1,4 @@
-package io.github.kapkekes
+package io.github.kapkekes.complex
 
 import kotlin.math.absoluteValue
 import kotlin.math.pow
@@ -12,7 +12,7 @@ import kotlin.math.sqrt
  * @param imaginary The imaginary part of the constructed number.
  * @property isReal The boolean value, which depends on if [imaginary] is equal to `0.0`.
  * @property conjugate The conjugate complex number for `this`.
- * @property abs The absolute value of the complex number, also known as a radius.
+ * @property absoluteValue The absolute value of the complex number, also known as a radius.
  */
 class Complex(
     val real: Double = 0.0,
@@ -20,7 +20,7 @@ class Complex(
 ) {
     val isReal: Boolean by lazy { imaginary == 0.0 }
     val conjugate: Complex by lazy { Complex(real, -imaginary) }
-    val abs: Double by lazy { sqrt(real * real + imaginary * imaginary) }
+    val absoluteValue: Double by lazy { sqrt(real * real + imaginary * imaginary) }
 
     /** Raises this value to the power [x]. */
     fun pow(x: Complex): Complex {

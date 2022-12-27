@@ -1,6 +1,6 @@
 package io.github.kapkekes.complex.extensions
 
-import io.github.kapkekes.Complex
+import io.github.kapkekes.complex.Complex
 import kotlin.math.cos
 import kotlin.math.sign
 import kotlin.math.sin
@@ -9,8 +9,8 @@ import kotlin.math.sin
 fun sqrt(x: Complex): Complex {
     return if (!x.isReal) {
         Complex(
-            kotlin.math.sqrt((x.abs + x.real) / 2),
-            sign(x.imaginary) * kotlin.math.sqrt((x.abs - x.real) / 2),
+            kotlin.math.sqrt((x.absoluteValue + x.real) / 2),
+            sign(x.imaginary) * kotlin.math.sqrt((x.absoluteValue - x.real) / 2),
         )
     } else if (x.real >= 0) {
         Complex(kotlin.math.sqrt(x.real))
