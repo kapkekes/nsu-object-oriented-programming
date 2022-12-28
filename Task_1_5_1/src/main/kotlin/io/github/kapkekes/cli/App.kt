@@ -20,6 +20,7 @@ import io.github.kapkekes.operations.logic.Less
 import io.github.kapkekes.operations.logic.LessOrEqual
 import io.github.kapkekes.operations.logic.True
 import io.github.kapkekes.operations.trigonometry.Cosine
+import io.github.kapkekes.operations.trigonometry.Degree
 import io.github.kapkekes.operations.trigonometry.Sine
 
 /** Main routine of the application. */
@@ -28,7 +29,7 @@ fun main() {
         Addition, Division, Logarithm, Multiplication, Power, SquareRoot, Subtraction,
         Exit,
         Equality, False, Greater, GreaterOrEqual, IfElse, Inequality, Less, LessOrEqual, True,
-        Cosine, Sine,
+        Cosine, Degree, Sine,
     )
 
     val calculator = Calculator(operations)
