@@ -2,37 +2,48 @@ package io.github.kapkekes
 
 import kotlinx.datetime.Clock
 import kotlinx.datetime.Instant
+import kotlinx.serialization.Serializable
 
 /**
  * Collection, which is purposed to store [Record] and maintain convenient access possibility to them.
  *
  * @property index The names of all records in `this` notebook.
  * @constructor Construct a new notebook.
- * @param existingRecords Records, which should be added to the notebook at the construction.
  * @throws IllegalArgumentException If there are any two records with the same name.
  */
-class Notebook
-@Throws(IllegalArgumentException::class)
-constructor(
-    existingRecords: Iterable<Record>? = null,
+@Serializable
+class Notebook(
+    private val records: MutableMap<String, Record>
 ) {
-    private val records: MutableMap<String, Record> = mutableMapOf()
-    val index: Set<String>
-        get() = records.keys
+    /**
+     * Creates a new notebook.
+     *
+     * @constructor Construct a new notebook from the given [existingRecords].
+     * @param existingRecords Records, which should be added to the notebook at the construction.
+     */
+    constructor(
+        existingRecords: Iterable<Record>? = null,
+    ) : this(
+        if (existingRecords == null) {
+            mutableMapOf<String, Record>()
+        } else {
+            val temp =  mutableMapOf<String, Record>()
 
-    init {
-        if (existingRecords != null) {
             for (record in existingRecords) {
-                if (record.name !in records) {
-                    records[record.name] = record
+                if (record.name !in temp) {
+                    temp[record.name] = record
                 } else {
                     throw IllegalArgumentException(
-                        "There are at least two records with the same name: ${records[record.name]} and $record"
+                        "There are at least two records with the same name: ${temp[record.name]} and $record"
                     )
                 }
             }
+
+            temp
         }
-    }
+    )
+    val index: Set<String>
+        get() = records.keys
 
     /**
      * Returns the [Record] corresponding to the given [name], or `null` if such a name is not present in the notebook.
