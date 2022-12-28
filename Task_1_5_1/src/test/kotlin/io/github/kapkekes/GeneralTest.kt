@@ -21,6 +21,7 @@ import io.github.kapkekes.operations.logic.Less
 import io.github.kapkekes.operations.logic.LessOrEqual
 import io.github.kapkekes.operations.logic.True
 import io.github.kapkekes.operations.trigonometry.Cosine
+import io.github.kapkekes.operations.trigonometry.Degree
 import io.github.kapkekes.operations.trigonometry.Sine
 import kotlin.test.Test
 import kotlin.test.assertEquals
@@ -33,7 +34,7 @@ class GeneralTest {
             Addition, Division, Logarithm, Multiplication, Power, SquareRoot, Subtraction,
             Exit,
             Equality, False, Greater, GreaterOrEqual, IfElse, Inequality, Less, LessOrEqual, True,
-            Cosine, Sine,
+            Cosine, Degree, Sine,
         ),
     )
 
