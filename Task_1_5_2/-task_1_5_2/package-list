@@ -1,0 +1,23 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:io.github.kapkekes.cli////PointingToDeclaration/-task_1_5_2/io.github.kapkekes.cli/index.html
+$dokka.location:io.github.kapkekes.cli//main/#kotlin.Array[kotlin.String]/PointingToDeclaration/-task_1_5_2/io.github.kapkekes.cli/main.html
+$dokka.location:io.github.kapkekes////PointingToDeclaration/-task_1_5_2/io.github.kapkekes/index.html
+$dokka.location:io.github.kapkekes/Notebook///PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-notebook/index.html
+$dokka.location:io.github.kapkekes/Notebook/Notebook/#kotlin.collections.Iterable[io.github.kapkekes.Record]?/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-notebook/-notebook.html
+$dokka.location:io.github.kapkekes/Notebook/Notebook/#kotlin.collections.MutableMap[kotlin.String,io.github.kapkekes.Record]/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-notebook/-notebook.html
+$dokka.location:io.github.kapkekes/Notebook/add/#kotlin.String#kotlin.String/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-notebook/add.html
+$dokka.location:io.github.kapkekes/Notebook/filter/#kotlinx.datetime.Instant#kotlinx.datetime.Instant#kotlin.collections.Set[kotlin.String]?/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-notebook/filter.html
+$dokka.location:io.github.kapkekes/Notebook/get/#kotlin.String/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-notebook/get.html
+$dokka.location:io.github.kapkekes/Notebook/index/#/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-notebook/--index--.html
+$dokka.location:io.github.kapkekes/Notebook/remove/#kotlin.String/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-notebook/remove.html
+$dokka.location:io.github.kapkekes/Notebook/show/#kotlinx.datetime.Instant#kotlinx.datetime.Instant#kotlin.collections.Set[kotlin.String]?/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-notebook/show.html
+$dokka.location:io.github.kapkekes/Record///PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-record/index.html
+$dokka.location:io.github.kapkekes/Record/Record/#kotlin.String#kotlin.String#kotlinx.datetime.Instant/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-record/-record.html
+$dokka.location:io.github.kapkekes/Record/content/#/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-record/content.html
+$dokka.location:io.github.kapkekes/Record/name/#/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-record/name.html
+$dokka.location:io.github.kapkekes/Record/timestamp/#/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-record/timestamp.html
+$dokka.location:io.github.kapkekes/Record/toString/#/PointingToDeclaration/-task_1_5_2/io.github.kapkekes/-record/to-string.html
+io.github.kapkekes
+io.github.kapkekes.cli
+
