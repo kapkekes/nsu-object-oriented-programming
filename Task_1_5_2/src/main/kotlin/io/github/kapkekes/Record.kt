@@ -3,6 +3,7 @@ package io.github.kapkekes
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import kotlinx.serialization.Serializable
 
 /**
  * Simple record data class for [Notebook].
@@ -11,6 +12,7 @@ import kotlinx.datetime.toLocalDateTime
  * @param content The content of the record.
  * @param timestamp The time, when the record was created.
  */
+@Serializable
 data class Record(
     val name: String,
     val content: String,
