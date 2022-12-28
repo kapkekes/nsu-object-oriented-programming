@@ -19,6 +19,6 @@ data class Record(
     val timestamp: Instant,
 ) {
     override fun toString(): String {
-        return "$name, ${timestamp.toLocalDateTime(TimeZone.currentSystemDefault())}: $content"
+        return "\"$name\", ${timestamp.toLocalDateTime(TimeZone.currentSystemDefault())}: $content"
     }
 }
