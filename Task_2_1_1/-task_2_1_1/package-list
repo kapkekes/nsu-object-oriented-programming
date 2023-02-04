@@ -1,0 +1,18 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:io.github.kapkekes.sieves////PointingToDeclaration/-task_2_1_1/io.github.kapkekes.sieves/index.html
+$dokka.location:io.github.kapkekes.sieves/EratosthenesSieve///PointingToDeclaration/-task_2_1_1/io.github.kapkekes.sieves/-eratosthenes-sieve/index.html
+$dokka.location:io.github.kapkekes.sieves/EratosthenesSieve/EratosthenesSieve/#kotlin.Int/PointingToDeclaration/-task_2_1_1/io.github.kapkekes.sieves/-eratosthenes-sieve/-eratosthenes-sieve.html
+$dokka.location:io.github.kapkekes.sieves/EratosthenesSieve/initialize/#/PointingToDeclaration/-task_2_1_1/io.github.kapkekes.sieves/-eratosthenes-sieve/initialize.html
+$dokka.location:io.github.kapkekes.sieves/EratosthenesSieve/isPrime/#kotlin.Int/PointingToDeclaration/-task_2_1_1/io.github.kapkekes.sieves/-eratosthenes-sieve/is-prime.html
+$dokka.location:io.github.kapkekes.sieves/SimpleSieve///PointingToDeclaration/-task_2_1_1/io.github.kapkekes.sieves/-simple-sieve/index.html
+$dokka.location:io.github.kapkekes.sieves/SimpleSieve/SimpleSieve/#/PointingToDeclaration/-task_2_1_1/io.github.kapkekes.sieves/-simple-sieve/-simple-sieve.html
+$dokka.location:io.github.kapkekes.sieves/SimpleSieve/initialize/#/PointingToDeclaration/-task_2_1_1/io.github.kapkekes.sieves/-simple-sieve/initialize.html
+$dokka.location:io.github.kapkekes.sieves/SimpleSieve/isPrime/#kotlin.Int/PointingToDeclaration/-task_2_1_1/io.github.kapkekes.sieves/-simple-sieve/is-prime.html
+$dokka.location:io.github.kapkekes////PointingToDeclaration/-task_2_1_1/io.github.kapkekes/index.html
+$dokka.location:io.github.kapkekes/Sieve///PointingToDeclaration/-task_2_1_1/io.github.kapkekes/-sieve/index.html
+$dokka.location:io.github.kapkekes/Sieve/initialize/#/PointingToDeclaration/-task_2_1_1/io.github.kapkekes/-sieve/initialize.html
+$dokka.location:io.github.kapkekes/Sieve/isPrime/#kotlin.Int/PointingToDeclaration/-task_2_1_1/io.github.kapkekes/-sieve/is-prime.html
+io.github.kapkekes
+io.github.kapkekes.sieves
+
