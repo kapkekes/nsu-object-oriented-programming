@@ -1,16 +1,10 @@
 package io.github.kapkekes
 
-/**
- * A base class for finding prime numbers
- *
- * @property upperBound The largest integer which can be checked by this sieve.
- */
-abstract class Sieve(
-    private val upperBound: Int,
-) {
+/** A base interface for sieves, which find prime numbers. */
+interface Sieve {
     /** Should be called before any calls to [isPrime] to initialize a sieve. */
-    abstract fun initialize()
+    fun initialize(): Sieve
 
     /** Checks if [x] is a prime. */
-    abstract fun isPrime(x: Int): Boolean
+    fun isPrime(x: Int): Boolean
 }
