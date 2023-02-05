@@ -21,7 +21,7 @@ class EratosthenesSieve(
                 continue
             }
 
-            for (composite in prime*2..upperBound step prime) {
+            for (composite in (prime * 2)..upperBound step prime) {
                 primes[composite] = false
             }
         }
