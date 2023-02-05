@@ -13,6 +13,11 @@ $dokka.location:io.github.kapkekes////PointingToDeclaration/-task_2_1_1/io.gith
 $dokka.location:io.github.kapkekes/Sieve///PointingToDeclaration/-task_2_1_1/io.github.kapkekes/-sieve/index.html
 $dokka.location:io.github.kapkekes/Sieve/initialize/#/PointingToDeclaration/-task_2_1_1/io.github.kapkekes/-sieve/initialize.html
 $dokka.location:io.github.kapkekes/Sieve/isPrime/#kotlin.Int/PointingToDeclaration/-task_2_1_1/io.github.kapkekes/-sieve/is-prime.html
+$dokka.location:io.github.kapkekes/Solution///PointingToDeclaration/-task_2_1_1/io.github.kapkekes/-solution/index.html
+$dokka.location:io.github.kapkekes/Solution/consecutive/#io.github.kapkekes.Sieve#kotlin.collections.Collection[kotlin.Int]/PointingToDeclaration/-task_2_1_1/io.github.kapkekes/-solution/consecutive.html
+$dokka.location:io.github.kapkekes/Solution/executor/#io.github.kapkekes.Sieve#kotlin.collections.Collection[kotlin.Int]#kotlin.Int/PointingToDeclaration/-task_2_1_1/io.github.kapkekes/-solution/executor.html
+$dokka.location:io.github.kapkekes/Solution/parallelStream/#io.github.kapkekes.Sieve#kotlin.collections.Collection[kotlin.Int]/PointingToDeclaration/-task_2_1_1/io.github.kapkekes/-solution/parallel-stream.html
+$dokka.location:io.github.kapkekes/Solution/thread/#io.github.kapkekes.Sieve#kotlin.collections.Collection[kotlin.Int]#kotlin.Int/PointingToDeclaration/-task_2_1_1/io.github.kapkekes/-solution/thread.html
 io.github.kapkekes
 io.github.kapkekes.sieves
 
