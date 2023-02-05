@@ -9,11 +9,11 @@ import kotlin.test.assertFalse
 
 /** Test factory for [Sieve]-implementing classes. */
 class SievesTest {
-    private fun assertWithSieve(ints: Collection<Int>): (Sieve) -> Unit {
+    private fun assertWithSieve(vararg ints: Int): (Sieve) -> Unit {
         return { sieve: Sieve -> ints.map { assert(sieve.isPrime(it)) } }
     }
 
-    private fun assertFalseWithSieve(ints: Collection<Int>): (Sieve) -> Unit {
+    private fun assertFalseWithSieve(vararg ints: Int): (Sieve) -> Unit {
         return { sieve: Sieve -> ints.map { assertFalse(sieve.isPrime(it)) } }
     }
 
@@ -25,9 +25,9 @@ class SievesTest {
         ).map { it.initialize() }
 
         val testCases = listOf(
-            Pair("Specials", assertFalseWithSieve(listOf(0, 1))),
-            Pair("Primes", assertWithSieve(listOf(2, 3, 5, 97))),
-            Pair("Composites", assertFalseWithSieve(listOf(4, 9, 20, 49, 63))),
+            Pair("Specials", assertFalseWithSieve(0, 1)),
+            Pair("Primes", assertWithSieve(2, 3, 5, 97)),
+            Pair("Composites", assertFalseWithSieve(4, 9, 20, 49, 63)),
         )
 
         return sieves.flatMap { sieve: Sieve ->
