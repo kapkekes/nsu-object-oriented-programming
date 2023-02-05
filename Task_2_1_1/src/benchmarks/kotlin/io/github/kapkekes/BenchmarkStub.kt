@@ -20,13 +20,21 @@ abstract class BenchmarkStub {
     protected val sieve: Sieve = SimpleSieve().initialize()
     protected lateinit var sample: Collection<Int>
 
-    @Param("example.txt")
-    var samplePath: String = "example.txt"
+    @Param("example.primes")
+    var samplePath: String = "example.primes"
 
     /** Load sample to the [sample] property. */
     @Setup
     fun loadSample() {
-        sample = File(samplePath).readLines().map { it.toInt() }
+        sample = File(samplePath)
+            .readBytes()
+            .toList()
+            .windowed(4, 4)
+            .map bytesToInt@{
+                var decodedInt = 0
+                it.mapIndexed { index, byte -> decodedInt += byte.toUByte().toInt() shl (index * 8) }
+                return@bytesToInt decodedInt
+            }
     }
 
     /** Actual [Benchmark] routine, which should be overriden. */
