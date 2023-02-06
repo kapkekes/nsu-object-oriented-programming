@@ -58,7 +58,7 @@ benchmark {
     }.map {
         it.path
     }.toList().toTypedArray()
-    val threadQuantities: Array<Int> = Array(8) { it + 1 }
+    val threadQuantities: Array<Int> = Array(16) { it + 1 }
 
     configurations {
         named("main") {
@@ -68,6 +68,19 @@ benchmark {
             warmups = 5
             iterations = 10
             iterationTime = 5
+            iterationTimeUnit = "sec"
+            outputTimeUnit = "MICROSECONDS"
+
+            param("samplePath", *samplePaths)
+            param("threadQuantity", *threadQuantities)
+        }
+        register("smoke") {
+            mode = "avgt"
+            reportFormat = "csv"
+
+            warmups = 2
+            iterations = 2
+            iterationTime = 2
             iterationTimeUnit = "sec"
             outputTimeUnit = "MICROSECONDS"
 
