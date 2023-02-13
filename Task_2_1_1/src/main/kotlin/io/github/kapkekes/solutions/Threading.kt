@@ -1,7 +1,7 @@
 package io.github.kapkekes.solutions
 
-import io.github.kapkekes.Solution
 import io.github.kapkekes.Sieve
+import io.github.kapkekes.Solution
 import java.lang.Thread
 import kotlin.concurrent.thread
 
@@ -14,7 +14,7 @@ import kotlin.concurrent.thread
 class Threading(
     private val sieve: Sieve,
     private val threadQuantity: Int,
-): Solution {
+) : Solution {
     override fun containsComposite(ints: Collection<Int>): Boolean {
         val threadWorkloadSize: Int = ints.count() / threadQuantity + (ints.count() % threadQuantity).compareTo(0)
         val workloads: List<List<Int>> = ints.windowed(threadWorkloadSize, threadWorkloadSize, true)
