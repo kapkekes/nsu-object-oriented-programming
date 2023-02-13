@@ -1,5 +1,6 @@
 package io.github.kapkekes
 
+import io.github.kapkekes.solutions.Executor
 import kotlinx.benchmark.Benchmark
 import kotlinx.benchmark.Param
 import kotlinx.benchmark.Scope
@@ -7,7 +8,7 @@ import kotlinx.benchmark.State
 import java.util.concurrent.ExecutorService
 
 /**
- * The [Solution.executor] benchmark.
+ * The [Executor] solution benchmark.
  *
  * @property threadQuantity The quantity of threads, which [ExecutorService] will use.
  */
@@ -18,6 +19,6 @@ class ExecutorBenchmark : BenchmarkStub() {
 
     @Benchmark
     override fun routine(): Boolean {
-        return Solution.executor(sieve, sample, threadQuantity)
+        return Executor(sieve, threadQuantity).containsComposite(sample)
     }
 }
