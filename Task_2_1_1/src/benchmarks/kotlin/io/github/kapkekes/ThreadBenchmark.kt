@@ -1,14 +1,15 @@
 package io.github.kapkekes
 
+import io.github.kapkekes.solutions.Threading
 import kotlinx.benchmark.Benchmark
 import kotlinx.benchmark.Param
 import kotlinx.benchmark.Scope
 import kotlinx.benchmark.State
 
 /**
- * The [Solution.thread] benchmark.
+ * The [Threading] solution benchmark.
  *
- * @property threadQuantity The quantity of threads, which will be created by [Solution.thread].
+ * @property threadQuantity The quantity of threads, which will be created by [Threading] solution.
  */
 @State(Scope.Benchmark)
 class ThreadBenchmark : BenchmarkStub() {
@@ -17,6 +18,6 @@ class ThreadBenchmark : BenchmarkStub() {
 
     @Benchmark
     override fun routine(): Boolean {
-        return Solution.thread(sieve, sample, threadQuantity)
+        return Threading(sieve, threadQuantity).containsComposite(sample)
     }
 }
